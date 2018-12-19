@@ -1,0 +1,55 @@
+page-login {
+    ion-content{
+    //background: linear-gradient(to top, rgba(0,0,0,1) 10%,rgba(255,255,255,0.1)),url('../assets/imgs/keyforge_box.jpg') no-repeat;
+        .scroll-content {
+            overflow: scroll !important;
+            -webkit-overflow-scrolling: touch !important;
+        }
+        background:linear-gradient(to top, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2)),url('../assets/imgs/keyforge_box.jpg') no-repeat;
+        background-size: 100% auto;
+    }
+    .header {
+        height: 70px;
+        background-color: map-get($colors, primary);
+        width: 100%;
+        top: 0;
+      }
+      .cardForm{
+          position: absolute;
+          top:50%;
+          left:50%;
+          padding:15px;
+          -ms-transform: translateX(-50%) translateY(-50%);
+          -webkit-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+          width: 400px;
+      }
+      img{
+        width: 250px;
+        height: auto;
+        left: 10px;
+        right: 10px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      form {
+        margin-top: 40px;
+      }
+      ion-label {
+        margin-left: 5px;
+      }
+      .formItem{
+        background-color: rgba(255,255,255,0.8);
+      }
+      ion-input {
+        padding: 5px;
+        background-color: transparent;;
+      }
+      .invalid {
+        border-bottom: 1px solid #FF6153;
+      }
+      .error-message .item-inner {
+        border-bottom: 0 !important;
+      }
+}

@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Statistiques des decks</ion-title>
+    </ion-navbar>
+    <ion-toolbar>
+      <ion-select name="deck" placeholder="Filtrage par deck" interface="action-sheet" [(ngModel)]="selectedDeck"
+      (ionChange)="filteringItem($event)">
+        <ion-option *ngFor="let deck of comboDeck" value="{{deck.deckName}}">{{ deck.deckName }}</ion-option>
+      </ion-select>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding class="window">
+    <div class="divCard" *ngFor="let item of decks">
+      <ion-item class="cardHeader" no-padding no-lines>
+        <font class="cardTitle"><b>{{ item?.deckName }}</b></font>
+        <p><i>{{ item?.player?.nom }}</i></p>
+        <p><font color="'#000000'">Win : <ion-badge>{{ item?.pourcentWin }}%</ion-badge> ({{ item?.win }})</font> | 
+          <font color="'#000000'">Loose : <ion-badge>{{ item?.pourcentLoose }}%</ion-badge> ({{ item?.loose }})</font> | 
+          <font color="'#000000'">Draw : <ion-badge>{{ item?.pourcentDraw }}%</ion-badge> ({{ item?.draw }})</font> |
+          <font color="'#000000'">Parties : <ion-badge>{{ item?.nbGames }}</ion-badge></font></p>
+        <img src="{{ item?.faction1?.url }}" item-right/>
+        <img src="{{ item?.faction2?.url }}" item-right/>
+        <img src="{{ item?.faction3?.url }}" item-right/>
+        <ion-icon name="ios-arrow-forward" item-right color="arrow"></ion-icon>
+      </ion-item>
+    </div>
+  </ion-content>
+  

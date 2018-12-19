@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ deckDetail?.deckName }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="window">
+  <ion-scroll scrollY="true" style="width: 100%; height: 100%;">
+    <div class="cardForm">
+      <ion-item class="formItem" no-lines>
+        <ion-select class="combo" interface="action-sheet" placeholder="Sélectionnez le joueur" [(ngModel)]="selectedPlayer" name="selectedPlayer.nom">
+          <ion-option *ngFor="let player of players" [value]="player.nom">{{ player.nom }}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item class="formItem" no-lines>
+        <ion-input type="text" class="disabledFiled" [(ngModel)]="deckDetail.deckName" readonly="true"></ion-input>
+      </ion-item>
+      <ion-item class="formItem" no-lines>
+        <ion-input placeholder="AOmbres directes" type="number" [(ngModel)]="deckDetail.aombres"></ion-input>
+      </ion-item>
+      <ion-item class="formItem" no-lines>
+        <ion-input placeholder="Nombre de créatures" type="number" [(ngModel)]="deckDetail.creatures"></ion-input>
+      </ion-item>
+      <ion-item class="formItem" no-lines>
+        <ion-input placeholder="Nombre de cartes rares" type="number" [(ngModel)]="deckDetail.rares"></ion-input>
+      </ion-item>
+      
+      <h4 text-center>Sélectionnez les factions</h4>
+      <ion-grid [style.marginTop]="'10px'">
+        <ion-row>
+          <ion-col text-center>
+            <button clear icon-only 
+              [ngClass]="logoDis.selected === true ? 'logoButtonSelected' : 'logoButton'" (click)="onSelect(logoDis)" type="button">
+              <img [src]="logoDis.faction.url"/>
+            </button>
+          </ion-col>  
+          <ion-col text-center>
+            <button clear icon-only 
+              [ngClass]="logoBrobnar.selected === true ? 'logoButtonSelected' : 'logoButton'" (click)="onSelect(logoBrobnar)" type="button">
+            <img [src]="logoBrobnar.faction.url"/>            
+            </button>
+          </ion-col>
+          <ion-col text-center>
+            <button clear icon-only 
+              [ngClass]="logoLogos.selected === true ? 'logoButtonSelected' : 'logoButton'" (click)="onSelect(logoLogos)" type="button">
+              <img [src]="logoLogos.faction.url"/>
+            </button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col text-center>
+            <button clear icon-only 
+            [ngClass]="logoMars.selected === true ? 'logoButtonSelected' : 'logoButton'" (click)="onSelect(logoMars)" type="button">
+            <img [src]="logoMars.faction.url"/>
+            </button>
+          </ion-col>  
+          <ion-col text-center>
+            <button clear icon-only 
+            [ngClass]="logoSanctum.selected === true ? 'logoButtonSelected' : 'logoButton'" (click)="onSelect(logoSanctum)" type="button">
+            <img [src]="logoSanctum.faction.url"/>
+            </button>
+          </ion-col>
+          <ion-col text-center>
+            <button clear icon-only 
+            [ngClass]="logoShadow.selected === true ? 'logoButtonSelected' : 'logoButton'" (click)="onSelect(logoShadow)" type="button">
+            <img [src]="logoShadow.faction.url"/>
+            </button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col text-center>
+            <button clear icon-only 
+            [ngClass]="logoUntamed.selected === true ? 'logoButtonSelected' : 'logoButton'" (click)="onSelect(logoUntamed)" type="button">
+            <img [src]="logoUntamed.faction.url"/>
+            </button>
+          </ion-col>  
+        </ion-row>
+      </ion-grid>
+      <button ion-button clear class="submitButton" color="dark_red" (click)="onUpdateDeck()">ENREGISTRER</button>
+    </div>
+    </ion-scroll>  
+</ion-content>

@@ -1,0 +1,17 @@
+<ion-content no-padding class="window">
+  <div class="cardForm">
+    <!-- <img alt="alt=" src="./assets/imgs/logoELA_low.png"/> -->
+    <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+        <ion-item class="formItem">
+          <ion-input #email formControlName="email" type="email" aria-labelledby="lbl-email" placeholder="Your email address"
+            [class.invalid]="!loginForm.controls.email.valid"></ion-input>
+        </ion-item>
+        <ion-item class="formItem">
+          <ion-input #password formControlName="password" type="password" aria-labelledby="lbl-password" placeholder="Your password"
+            [class.invalid]="!loginForm.controls.password.valid"></ion-input>
+        </ion-item>
+      <button ion-button clear class="formSubmitButton" type="submit">CONNEXION</button>
+      <button ion-button clear class="formSubmitButton" type="button" (click)="createAccount()">CREER UN COMPTE</button>
+    </form>
+  </div>
+</ion-content>

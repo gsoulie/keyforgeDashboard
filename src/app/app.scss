@@ -1,0 +1,139 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+@font-face {
+    font-family: "DINPro";
+    src: url("../assets/fonts/DINPro.otf") format("opentype");
+    font-weight: 200;
+    font-style: normal;
+    font-display: auto;
+}
+ion-header{
+    font-family: "DINPro" !important;
+}
+.actionButton{
+    width: 45px;
+    height: 45px;
+}
+.cardForm{
+    /*top:50%;
+    left:50%;
+    padding:15px;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);*/
+    position: absolute;
+    left:50%;
+    padding:15px;
+    -ms-transform: translateX(-50%);
+    -webkit-transform: translate(-50%);
+    transform: translate(-50%);
+    width: 400px;
+    min-width: 350px;
+}
+.cardHeader{
+    z-index: 0;
+    padding-left: 10px;
+    border-radius: 10px;
+    background-color: transparent;
+    float: center;
+    
+}
+.cardTitle{
+    font-size: 1.1em;
+    margin-right: 10px;
+}
+.combo{
+    right: auto!important;
+    direction: ltr!important;
+    padding-left: 0!important;
+    text-align: left;
+    max-width: 100%!important;
+    width: 100%!important;
+    right: auto!important;
+}
+.divCard{
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 0px;
+    padding-left: 15px;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.2);
+}
+.draw_picto{
+    width: 25px;
+    height: 25px;
+    background-color: transparent !important;
+}
+.formItem{
+    background-color: white;
+    border-radius: 10px !important;
+    margin-top: 10px !important;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.1);
+}
+.formSubmitButton{
+    border-radius: 10px;
+    box-shadow: none !important;
+    height: 50px;
+    font-family: "DINPro";
+    width: auto;
+    margin-top: 20px;
+    background-color: black;
+    border: 1px solid white;
+    width: 100%;
+    color: white;
+}
+.formSubmitButton:hover{
+    border-radius: 10px;
+}
+h2{
+    width: 100%;
+}
+img{
+    width: 80px;
+    height: 80px;
+}
+.logoButton{
+    border-radius: 100px;
+    background-color: transparent !important;
+    opacity:0.5;
+}
+.logoButtonSelected{
+    border-radius: 100px;
+    background-color: transparent !important;
+    opacity:1;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.3);
+}
+.submitButton{
+    border-radius: 10px;
+    box-shadow: none !important;
+    height: 50px;
+    font-family: "DINPro";
+    width: auto;
+    margin-top: 20px;
+    background-color: map-get($colors, primary);
+    width: 100%;
+    color: white;
+}
+.window{
+    background-color: #f4f4f4;
+    font-family: "DINPro" !important;
+}
+.win_picto{
+    width: 30px;
+    height: 28px; 
+    background-color: transparent !important;
+}

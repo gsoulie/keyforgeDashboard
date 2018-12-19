@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Nouveau match</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="window">
+    
+  <div class="divCard" [ngClass]="resWinDeck1 === 'Win' ? 'divCardWin' : 'divCard'">
+    <ion-item no-lines>
+      <button ion-button no-padding block clear item-left (click)="onChooseDeck(1)" item-left>Sélectionner un deck</button>
+      <button ion-button no-padding block clear item-left (click)="onChoosePlayer(1)" item-right>Sélectionner un joueur</button>
+    </ion-item>
+    <!-- <ion-select class="combo" interface="action-sheet" placeholder="Sélectionnez le joueur" [(ngModel)] ="selectedPlayer" name="cbo">
+      <ion-option *ngFor="let player of players" [value]="player">{{ player.nom }}</ion-option>
+    </ion-select> -->
+    <ion-item no-lines no-padding class="deckSelctionItem">
+      <font class="cardTitle" item-left><b>{{ deck1?.deckName }}</b></font>
+      <i>{{ player1?.nom }}</i>
+    </ion-item>   
+    <ion-item class="cardHeader" text-center no-padding no-lines>
+      <img *ngIf="deck1" src="{{ deck1?.faction1.url }}" item-left/>
+      <img *ngIf="deck1" src="{{ deck1?.faction2.url }}" item-left/>
+      <img *ngIf="deck1" src="{{ deck1?.faction3.url }}" item-left/>
+      <!-- <font class="cardTitle" item-left><i>{{ deck1?.player.nom }}</i></font> -->
+    </ion-item>
+    <ion-item no-lines class="cardHeader" *ngIf="deck1">
+      <ion-select item-left interface="action-sheet" placeholder="Résultat" [(ngModel)]="resWinDeck1" name="resPlayer1">
+        <ion-option *ngFor="let res of resStatus" [value]="res" (ionSelect)="onUpdateResDeck1()">{{ res }}</ion-option>
+      </ion-select>
+      <img *ngIf="resWinDeck1 === 'Win'" class="win_picto" src="../assets/imgs/key_win.png" item-right/>
+    </ion-item>
+  </div>
+  <ion-item class="versus" no-lines>
+    <h1 text-center><b>VS</b></h1>
+  </ion-item>
+  <div class="divCard" [ngClass]="resWinDeck2 === 'Win' ? 'divCardWin' : 'divCard'">
+    <ion-item no-lines>
+      <button ion-button no-padding block clear item-left (click)="onChooseDeck(2)" item-left>Sélectionner un deck</button>
+      <button ion-button no-padding block clear item-left (click)="onChoosePlayer(2)" item-right>Sélectionner un joueur</button>
+    </ion-item>
+    <ion-item no-lines no-padding class="deckSelctionItem">
+      <font class="cardTitle" item-left><b>{{ deck2?.deckName }}</b></font>
+      <i>{{ player2?.nom }}</i>
+    </ion-item>
+    <ion-item class="cardHeader" no-padding no-lines>
+      <img *ngIf="deck2" src="{{ deck2?.faction1.url }}" item-left/>
+      <img *ngIf="deck2" src="{{ deck2?.faction2.url }}" item-left/>
+      <img *ngIf="deck2" src="{{ deck2?.faction3.url }}" item-left/>
+      <!-- <font class="cardTitle" item-left><i>{{ deck2?.player.nom }}</i></font> -->
+    </ion-item>
+    <ion-item no-lines class="cardHeader" *ngIf="deck2">
+      <ion-select item-left interface="action-sheet" placeholder="Résultat" [(ngModel)]="resWinDeck2" name="resPlayer2">
+        <ion-option *ngFor="let res of resStatus" [value]="res" (ionSelect)="onUpdateResDeck2()">{{ res }}</ion-option>
+      </ion-select>
+      <img *ngIf="resWinDeck2 === 'Win'" class="win_picto" src="../assets/imgs/key_win.png" item-right/>
+    </ion-item>
+  </div>
+  <button ion-button clear class="submitButton" color="dark_red" (click)="onAddNewMatch()">AJOUTER LE MATCH</button>
+</ion-content>

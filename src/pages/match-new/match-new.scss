@@ -1,0 +1,58 @@
+page-match-new {
+    .deckSelctionItem{
+        background-color: transparent;
+        border-radius: 10px;
+    }
+    img{
+        height: 50px;
+        width: 50px;
+        background-color: transparent !important;
+    }
+    h1{
+        margin:auto;
+        height: 100%;
+    }
+    .versus{
+        background-color: transparent;
+        display: flex;
+    }
+    .divCard{
+        min-height: 170px;
+        border: none;
+    }
+    .divCardWin{
+        border: 4px solid #ffba00;
+    }
+    .cardHeader{
+        z-index: 90;
+    }
+    .radioBtn{
+        z-index: 100;
+    }
+    ion-row{
+        display: flex;
+    }
+    ion-col{
+        background-color: transparent !important;
+    }
+    .result{
+        margin:auto;
+        height: 100%;
+    }
+    .addButton{
+        bottom: 0;
+    }
+    .win_picto{
+        width: 58px;
+        height: 54px; 
+    }
+    .submitButton{
+        width: 400px;
+        position: absolute;
+        left:50%;
+        padding:15px;
+        -ms-transform: translateX(-50%);
+        -webkit-transform: translate(-50%);
+        transform: translate(-50%);
+    }
+}
