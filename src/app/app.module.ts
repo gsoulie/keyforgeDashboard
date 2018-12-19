@@ -24,7 +24,12 @@ import { DeckNewPage } from '../pages/deck-new/deck-new';
 import { AuthserviceProvider } from '../providers/authservice/authservice';
 
 export const firebaseConfig = {
-  
+  apiKey: "AIzaSyC8YbVdA_rjfO1qywt-DI4edEjPQhwQsP0",
+  authDomain: "keyforge-8f3ef.firebaseapp.com",
+  databaseURL: "https://keyforge-8f3ef.firebaseio.com",
+  projectId: "keyforge-8f3ef",
+  storageBucket: "",
+  messagingSenderId: "1039882347370"
 }
 
 @NgModule({

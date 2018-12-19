@@ -14,7 +14,7 @@
   </ion-header>
   
   <ion-content padding class="window">
-    <div class="divCard" *ngFor="let item of decks">
+    <div class="divCard" *ngFor="let item of decksTemp">
       <ion-item class="cardHeader" no-padding no-lines>
         <font class="cardTitle"><b>{{ item?.deckName }}</b></font>
         <p><i>{{ item?.player?.nom }}</i></p>

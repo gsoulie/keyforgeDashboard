@@ -14,6 +14,7 @@ import { cst } from '../../models/constantes';
 export class StatisticPage {
   deckList: AngularFireList<any>;
   decksObservable: Observable<any[]>;
+  decksTemp: any[] = [];
   decks: any[] = [];
   comboDeck: any[] = [];
   stats: any[];
@@ -35,9 +36,44 @@ export class StatisticPage {
       this.decksObservable = this.deckList.valueChanges().map(items => items.sort(this.tools.predicateBy('win')).reverse());
       this.decksObservable.subscribe((res) => {
         this.decks = res as any[];
-        this.comboDeck = this.decks;
+        this.comboDeck = res as any[];
+        this.comboDeck.sort(this.tools.predicateBy('deckName')).reverse();
         this.comboDeck.push({deckName: "Tous"});
-        this.decks.forEach(deck => {
+
+        for(let i = 0; i < this.decks.length; i++){
+          if(this.decks[i].deckName !== 'Tous'){
+            let pourcentWin = 0;
+            let pourcentLoose = 0;
+            let pourcentDraw = 0;
+      
+            if(this.decks[i].nbGames > 0){
+              pourcentWin = this.decks[i].win * (100/this.decks[i].nbGames);
+              pourcentLoose = this.decks[i].loose * (100/this.decks[i].nbGames);
+              pourcentDraw = this.decks[i].draw * (100/this.decks[i].nbGames);
+              this.decks[i]['pourcentWin'] = pourcentWin.toFixed(0);
+              this.decks[i]['pourcentLoose'] = pourcentLoose.toFixed(0);
+              this.decks[i]['pourcentDraw'] = pourcentDraw.toFixed(0);
+            }
+
+            this.decksTemp.push({
+              player: this.decks[i].player,
+              deckName: this.decks[i].deckName,
+              win: this.decks[i].win,
+              loose: this.decks[i].loose,
+              draw: this.decks[i].draw,
+              nbGames: this.decks[i].nbGames,
+              faction1: this.decks[i].faction1,
+              faction2: this.decks[i].faction2,
+              faction3: this.decks[i].faction3, 
+              pourcentWin: pourcentWin.toFixed(0),
+              pourcentLoose: pourcentLoose.toFixed(0),
+              pourcentDraw: pourcentDraw.toFixed(0)
+            })
+          }
+          
+        }
+        this.decksTemp.sort(this.tools.predicateBy('pourcentWin')).reverse();
+        /*this.decks.forEach(deck => {
           let pourcentWin = 0;
           let pourcentLoose = 0;
           let pourcentDraw = 0;
@@ -50,7 +86,15 @@ export class StatisticPage {
             deck['pourcentLoose'] = pourcentLoose.toFixed(0);
             deck['pourcentDraw'] = pourcentDraw.toFixed(0);
           }
-        });
+        });*/
+            /*if(deck.deckName !== 'Tous'){
+              this.decksTemp.push({
+                
+              })
+            }*/
+
+        //this.decks.sort(this.tools.predicateBy('pourcentWin')).reverse();
+        console.log("all - " + JSON.stringify(this.decksTemp));
         loader.dismiss();
       })
     } catch(e) {
@@ -81,6 +125,8 @@ export class StatisticPage {
             deck['pourcentDraw'] = pourcentDraw.toFixed(0);
           }
         });
+
+        this.decks.sort(this.tools.predicateBy('pourcentWin')).reverse();
       })
       return;
     }
@@ -109,6 +155,8 @@ export class StatisticPage {
           deck['pourcentDraw'] = pourcentDraw.toFixed(0);
         }
       });
+
+      this.decks.sort(this.tools.predicateBy('pourcentWin')).reverse();
     })
   }
 
