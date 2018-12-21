@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>{{ players.length | async}} Joueur(s)</ion-title>
+    <ion-title>{{ (players | async)?.length }} Joueur(s)</ion-title>
     <ion-buttons end>
         <button ion-button color="white" clear (click)="onAddNewPlayer()">
           Ajouter un joueur
