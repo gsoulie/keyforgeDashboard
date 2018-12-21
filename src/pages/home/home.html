@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title class="navTitle">{{ matchs?.length | async }} Match(s)</ion-title>
+    <ion-title class="navTitle">{{ (matchs2)?.length }} Match(s)</ion-title>
     <ion-buttons end>
       <button ion-button color="white" clear (click)="onAddNewMatch()">
         Ajouter une partie
@@ -22,7 +22,7 @@
   <!-- <ul>
     <li>Lazy loading</li>
   </ul> -->
-  <ion-grid *ngFor="let match of matchs | async">
+  <ion-grid *ngFor="let match of matchs2">
     <ion-row>
       <ion-col>
         <div class="divCard" >
@@ -67,7 +67,9 @@
       </ion-col> -->
     </ion-row>
   </ion-grid>
-    
+  <ion-infinite-scroll (ionInfinite)="scrollHandler($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
      <!-- <ion-fab top right>
       <button ion-fab class="fab_add" color="primary" aria-label="tags" (click)="onAddNewMatch()"><ion-icon color="dark" name="md-add"></ion-icon></button>
     </ion-fab> -->
