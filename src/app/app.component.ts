@@ -9,6 +9,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { HomePage } from '../pages/home/home';
 import { DeckListPage } from '../pages/deck-list/deck-list';
 import { PlayersListPage } from '../pages/players-list/players-list';
+import { SuggestionPage } from '../pages/suggestion/suggestion';
 
 @Component({
   templateUrl: 'app.html'
@@ -31,7 +32,8 @@ export class MyApp {
       { title: 'Games', component: HomePage },
       { title: 'Players', component: PlayersListPage },
       { title: 'Decks', component: DeckListPage },
-      { title: 'Stats', component: StatisticPage }
+      { title: 'Stats', component: StatisticPage },
+      { title: 'Suggestions', component: SuggestionPage}
     ];
 
     const authObserver = afAuth.authState

@@ -18,10 +18,23 @@
       <ion-item class="cardHeader" no-padding no-lines>
         <font class="cardTitle"><b>{{ item?.deckName }}</b></font>
         <p><i>{{ item?.player?.nom }}</i></p>
-        <p><font color="'#000000'">Win : <ion-badge>{{ item?.pourcentWin }}%</ion-badge> ({{ item?.win }})</font> | 
-          <font color="'#000000'">Loose : <ion-badge>{{ item?.pourcentLoose }}%</ion-badge> ({{ item?.loose }})</font> | 
-          <font color="'#000000'">Draw : <ion-badge>{{ item?.pourcentDraw }}%</ion-badge> ({{ item?.draw }})</font> |
-          <font color="'#000000'">Parties : <ion-badge>{{ item?.nbGames }}</ion-badge></font></p>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+                <font color="'#000000'">Win : <ion-badge>{{ item?.pourcentWin }}%</ion-badge> ({{ item?.win }})</font>
+            </ion-col>
+            <ion-col>
+                <font color="'#000000'">Loose : <ion-badge>{{ item?.pourcentLoose }}%</ion-badge> ({{ item?.loose }})</font>  
+            </ion-col>
+            <ion-col>
+                <font color="'#000000'">Draw : <b>{{ item?.pourcentDraw }}%</b> ({{ item?.draw }})</font> 
+            </ion-col>
+            <ion-col>
+                <font color="'#000000'">Parties : <b>{{ item?.nbGames }}</b></font>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+          
         <img src="{{ item?.faction1?.url }}" item-right/>
         <img src="{{ item?.faction2?.url }}" item-right/>
         <img src="{{ item?.faction3?.url }}" item-right/>

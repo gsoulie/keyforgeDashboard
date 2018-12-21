@@ -1,3 +1,4 @@
+import { SuggestionPage } from './../pages/suggestion/suggestion';
 import { MatchNewPage } from './../pages/match-new/match-new';
 import { LoginPage } from './../pages/login/login';
 import { StatisticPage } from './../pages/statistic/statistic';
@@ -24,6 +25,7 @@ import { DeckNewPage } from '../pages/deck-new/deck-new';
 import { AuthserviceProvider } from '../providers/authservice/authservice';
 
 export const firebaseConfig = {
+
 }
 
 @NgModule({
@@ -39,7 +41,8 @@ export const firebaseConfig = {
     MatchNewPage,
     DeckListPage,
     StatisticPage,
-    LoginPage
+    LoginPage,
+    SuggestionPage
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,8 @@ export const firebaseConfig = {
     MatchNewPage,
     DeckListPage,
     StatisticPage,
-    LoginPage
+    LoginPage,
+    SuggestionPage
   ],
   providers: [
     StatusBar,

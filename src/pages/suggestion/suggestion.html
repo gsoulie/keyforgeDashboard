@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Ajouter une suggestion</ion-title>
+  </ion-navbar>
+</ion-header>
+  
+<ion-content padding class="window">
+ 
+  <form #f="ngForm" (ngSubmit)="onAddSuggestion(f)">
+      <ion-item class="formItem" no-lines>
+    <ion-input placeholder="Suggestion" type="text" name="suggestion" ngModel></ion-input>
+   </ion-item>
+    <button ion-button clear class="submitButton" color="dark_red" [disabled]="!f.valid">AJOUTER</button>
+  </form>
+      
+  <ion-list [style.marginTop]="'40px'">
+    <ion-item *ngFor="let s of suggestions | async">
+      <ion-label>{{ s.titre }}</ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

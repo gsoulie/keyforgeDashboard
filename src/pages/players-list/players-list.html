@@ -4,15 +4,29 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>{{ (players | async)?.length }} Joueur(s)</ion-title>
-    <ion-buttons end>
+    <!-- <ion-buttons end>
         <button ion-button color="white" clear (click)="onAddNewPlayer()">
           Ajouter un joueur
         </button>
-      </ion-buttons>
+      </ion-buttons> -->
   </ion-navbar>
 </ion-header>
 
 <ion-content class="window" padding>
+    <form #f="ngForm" (ngSubmit)="onAddPlayer(f)">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-9>
+          <ion-item class="formItem" no-lines>
+              <ion-input placeholder="Nom du joueur" type="text" name="playerName" ngModel></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col col-3>
+          <button ion-button clear class="submitButton" color="dark_red" [disabled]="!f.valid">AJOUTER</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>    
+  </form>
   <div class="divCard" *ngFor="let player of players | async">
     <ion-item class="cardHeader" no-padding no-lines>
       <font class="cardTitle"><b>{{ player?.nom }}</b></font>

@@ -65,43 +65,46 @@ export class HomePage {
     }, 500);    
   }
 
+  /**
+   * Liste de tous les matchs
+   */
   getMatchs(){
-    console.log("--- fetching all match ----");
     if(this.filteringMode == false){
-    this.dataList = this.afDB.list(cst.TBL_DECK, ref => ref.orderByChild('deckName'));
-    this.deckObservable = this.dataList.valueChanges();
-    this.deckObservable.subscribe((res) => {
-      this.decks = res as any[];
-      this.decks.push({deckName: "Tous"});
-    })
-
-    const loader = this.loadingCtrl.create({
-      content: "Chargement des parties..."
-    });
-    loader.present();
-
-    if(this.lastItem === null){
-      this.dataList = this.afDB.list(cst.TBL_MATCH, ref => ref.orderByChild('id').limitToLast(20));
-    } else {
-      this.dataList = this.afDB.list(cst.TBL_MATCH, ref => ref.orderByChild('id').endAt(this.lastItem).limitToLast(20));
-    }
-    this.matchs = this.dataList.valueChanges().map(items => items.sort().reverse());
-    try{
-      this.matchs.subscribe((res) => {
-          let temp = res as any[];
-          this.lastItem = temp[temp.length-1].id;
-
-          if(this.matchs2.length > 0){
-            temp.splice(0,1);
-          }
-          temp.forEach(match => {
-            this.matchs2.push(match);
-          });
-          loader.dismiss();        
+      this.dataList = this.afDB.list(cst.TBL_DECK, ref => ref.orderByChild('deckName'));
+      this.deckObservable = this.dataList.valueChanges();
+      this.deckObservable.subscribe((res) => {
+        this.decks = res as any[];
+        this.decks.push({deckName: "Tous"});
       })
-    } catch(e){
-      loader.dismiss();
-    }
+
+      const loader = this.loadingCtrl.create({
+        content: "Chargement des parties..."
+      });
+      loader.present();
+
+      if(this.lastItem === null){
+        this.dataList = this.afDB.list(cst.TBL_MATCH, ref => ref.orderByChild('id').limitToLast(20));
+      } else {
+        this.dataList = this.afDB.list(cst.TBL_MATCH, ref => ref.orderByChild('id').endAt(this.lastItem).limitToLast(20));
+      }
+      this.matchs = this.dataList.valueChanges().map(items => items.sort().reverse());
+      try{
+        this.matchs.subscribe((res) => {
+            let temp = res as any[];
+            this.lastItem = temp[temp.length-1].id;
+
+            // Si pas premier chargement, retirer le premier item sinon il sera ajouté en double
+            if(this.matchs2.length > 0){
+              temp.splice(0,1);
+            }
+            temp.forEach(match => {
+              this.matchs2.push(match);
+            });
+            loader.dismiss();        
+        })
+      } catch(e){
+        loader.dismiss();
+      }
     }
   }
 
@@ -116,11 +119,10 @@ export class HomePage {
       this.lastItem = null;
       this.matchs2 = [];
       this.getMatchs();
-      console.log("--- modeFiltering --- " + this.filteringMode);
+      
       return;
     } else {
       this.filteringMode = true;
-      console.log("--- modeFiltering --- " + this.filteringMode);
     }
     
     this.dataList = this.afDB.list(cst.TBL_MATCH, ref => ref.orderByChild('id'));
@@ -137,7 +139,7 @@ export class HomePage {
   }
 
   onAddNewMatch(){
-    this.navCtrl.push(MatchNewPage,{callback: () => {this.getMatchs();}})
+    this.navCtrl.push(MatchNewPage,{callback: () => {this.matchs2 = [];this.getMatchs();}})
   }
 
   onOpenMatchDetail(match){

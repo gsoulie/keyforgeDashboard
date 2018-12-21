@@ -1,3 +1,4 @@
+import { NgForm } from '@angular/forms';
 import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 import { cst } from './../../models/constantes';
 import { ToolsProvider } from './../../providers/tools/tools';
@@ -43,6 +44,15 @@ export class PlayersListPage implements OnInit {
     } else {
       this.tools.showAlert("Suppression impossible",selectedPlayer.nom + " ne peut pas être supprimé car un ou plusieurs decks lui sont associés");
     }
+  }
+
+  onAddPlayer(f: NgForm){
+    if(f.value.playerName === ""){
+      return;
+    }
+
+    this.dataService.addNewPlayer(f.value.playerName)
+    f.reset();
   }
 
 }

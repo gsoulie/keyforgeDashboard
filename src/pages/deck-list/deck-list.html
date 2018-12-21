@@ -22,6 +22,42 @@
 </ion-header>
 
 <ion-content padding class="window">
+  <div class="statContainer" text-center *ngIf="selectedPlayer !== 'Tous' && selectedPlayer !== '' && selectedPlayer !== null">
+    <ion-grid text-center [style.backgroundColor]="'transparent'">
+      <ion-row text-center>
+        <ion-col text-center>
+          <img src="{{ logoDis.faction.url }}"/>
+          <font text-center color="'#000000'"><b>x{{ logoDis?.nb }}</b></font> 
+        </ion-col>
+        <ion-col text-center>
+          <img src="{{ logoBrobnar.faction.url }}"/>
+          <font color="'#000000'"><b>x{{ logoBrobnar?.nb }}</b></font> 
+        </ion-col>
+        <ion-col text-center>
+          <img src="{{ logoLogos.faction.url }}"/>
+          <font color="'#000000'"><b>x{{ logoLogos?.nb }}</b></font> 
+        </ion-col>
+        <ion-col text-center>
+          <img src="{{ logoMars.faction.url }}"/>
+          <font color="'#000000'"><b>x{{ logoMars?.nb }}</b></font> 
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-center text-center>
+          <img src="{{ logoSanctum.faction.url }}"/>
+          <font color="'#000000'"><b>x{{ logoSanctum?.nb }}</b></font> 
+        </ion-col>
+        <ion-col col-center text-center>
+          <img src="{{ logoShadow.faction.url }}"/>
+          <font color="'#000000'"><b>x{{ logoShadow?.nb }}</b></font> 
+        </ion-col>
+        <ion-col col-center text-center>
+          <img src="{{ logoUntamed.faction.url }}"/>
+          <font color="'#000000'"><b>x{{ logoUntamed?.nb }}</b></font> 
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
   <div class="divCard" *ngFor="let item of decks | async" (click)="onOpenDeckDetail(item)">
     <ion-item class="cardHeader" no-padding no-lines>
       <font class="cardTitle"><b>{{ item?.deckName }}</b></font>

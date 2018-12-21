@@ -5,7 +5,6 @@ import { IonicPage, LoadingController } from 'ionic-angular';
 import { Observable } from 'rxjs';
 import { cst } from '../../models/constantes';
 
-
 @IonicPage()
 @Component({
   selector: 'page-statistic',
@@ -73,28 +72,6 @@ export class StatisticPage {
           
         }
         this.decksTemp.sort(this.tools.predicateBy('pourcentWin')).reverse();
-        /*this.decks.forEach(deck => {
-          let pourcentWin = 0;
-          let pourcentLoose = 0;
-          let pourcentDraw = 0;
-    
-          if(deck.nbGames > 0){
-            pourcentWin = deck.win * (100/deck.nbGames);
-            pourcentLoose = deck.loose * (100/deck.nbGames);
-            pourcentDraw = deck.draw * (100/deck.nbGames);
-            deck['pourcentWin'] = pourcentWin.toFixed(0);
-            deck['pourcentLoose'] = pourcentLoose.toFixed(0);
-            deck['pourcentDraw'] = pourcentDraw.toFixed(0);
-          }
-        });*/
-            /*if(deck.deckName !== 'Tous'){
-              this.decksTemp.push({
-                
-              })
-            }*/
-
-        //this.decks.sort(this.tools.predicateBy('pourcentWin')).reverse();
-        console.log("all - " + JSON.stringify(this.decksTemp));
         loader.dismiss();
       })
     } catch(e) {
@@ -132,7 +109,6 @@ export class StatisticPage {
     }
     
     this.decksObservable = this.deckList.valueChanges().map(items => items.filter((deck) => {
-      
       if (deck.deckName.toLowerCase().indexOf(searchText.toLowerCase()) > -1) {
         return true;
       }

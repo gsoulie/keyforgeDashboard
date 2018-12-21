@@ -4,4 +4,12 @@ page-players-list {
     //     background-size: 100% auto;
     //     background-color: #000000;
     // }
+    ion-row{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    ion-col{
+        height: 100%;
+    }
 }

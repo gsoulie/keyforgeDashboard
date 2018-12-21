@@ -102,6 +102,16 @@ export class DataProvider {
     }
   }
 
+  addNewSuggestion(suggestion: string){
+    if(suggestion !== ""){
+      const firebaseRef = this.afDB.database.ref(cst.TBL_SUGGESTIONS).push({});
+      firebaseRef.set({id: firebaseRef.key,titre: suggestion, etat: false});   
+    } else {
+      this.log("addNewSuggestion","suggestion vide");
+      return false;
+    }
+  }
+
   deletePlayer(player){
     let found = 0;
     if(player){
@@ -204,33 +214,6 @@ export class DataProvider {
    ***************************************************/
 
    getMatchs(){
-    /*let matchsComplets = [];
-    console.log("contenu matchs " + JSON.stringify(this.matchs));
-    this.matchs.forEach(match => {
-      let index = this.tools.arraySearch(match.deck1Name.toUpperCase(),this.decks,"deckName");
-      let deck1 = null;
-      let deck2 = null;
-      if(index >= 0){
-        deck1 = this.decks[index];
-      }
-  
-      index = this.tools.arraySearch(match.deck2Name.toUpperCase(),this.decks,"deckName");
-      if(index >= 0){
-        deck2 = this.decks[index];
-      }
-  
-      matchsComplets.push({datetime: match.datetime,
-        deck1: deck1,
-        deck2: deck2,
-        deck1Result: match.deck1Result,
-        deck2Result: match.deck2Result,
-        player1: match.player1,
-        player2: match.player2,
-        id: match.id
-      });
-    });
-    console.log(JSON.stringify(matchsComplets));
-    return matchsComplets;*/
     return this.matchs.sort(this.tools.predicateBy("datetime")).reverse();
   }
   /**
