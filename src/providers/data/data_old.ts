@@ -1,4 +1,3 @@
-import { AngularFireAuth } from 'angularfire2/auth';
 import { Match } from '../../models/match';
 import { ToolsProvider } from '../tools/tools';
 import { Deck } from '../../models/deck';
@@ -22,8 +21,7 @@ export class DataOldProvider {
   dataset: Observable<any[]>;
 
   constructor(private tools: ToolsProvider,
-    public afDB: AngularFireDatabase,
-    private afAuth: AngularFireAuth) {
+    public afDB: AngularFireDatabase) {
       //this.user = this.afAuth.auth.currentUser.uid;
 
       this.dataList = this.afDB.list(cst.TBL_PLAYER,ref => ref.orderByChild('nom'));

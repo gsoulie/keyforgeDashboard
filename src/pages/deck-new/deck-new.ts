@@ -6,8 +6,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { cst } from '../../models/constantes';
 import { Deck } from '../../models/deck';
-import { Observable } from 'rxjs';
-
 
 @IonicPage()
 @Component({

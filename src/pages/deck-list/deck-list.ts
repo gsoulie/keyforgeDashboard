@@ -1,6 +1,5 @@
 import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 import { cst } from './../../models/constantes';
-import { DataProvider } from '../../providers/data/data';
 import { Deck } from './../../models/deck';
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
