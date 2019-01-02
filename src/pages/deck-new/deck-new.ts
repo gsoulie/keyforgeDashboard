@@ -27,7 +27,8 @@ export class DeckNewPage {
   deckAmber: number = null;
   deckCreatures: number = null;
   deckRares: number = null;
-
+  deckChain: number = null;
+  
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public tools: ToolsProvider,
@@ -79,7 +80,7 @@ export class DeckNewPage {
         selectedFactions[1].faction,
         selectedFactions[2].faction,
         this.selectedPlayer,
-        null));
+        null),this.deckChain);
       
       this.toastCtrl.create({
         message: "Le deck " + this.deckName + " a bien été ajouté",
@@ -99,6 +100,7 @@ export class DeckNewPage {
     this.deckCreatures = null;
     this.deckName = "";
     this.deckRares = null;
+    this.deckChain = null;
     this.logoDis.selected = false;
     this.logoBrobnar.selected = false;
     this.logoLogos.selected = false;
