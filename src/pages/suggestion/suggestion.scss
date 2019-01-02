@@ -3,4 +3,17 @@ page-suggestion {
         width: 400px;
         margin: auto;
     }
+    .checkButton{
+        width: 45px;
+        height: 45px;
+    }
+    .labelUnchecked{
+        color: #000000;
+        font-style: normal;
+    }
+    .labelChecked{
+        color: map-get($colors, arrow);
+        font-style: italic;
+        text-decoration: line-through;
+    }
 }

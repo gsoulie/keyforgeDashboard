@@ -30,4 +30,8 @@ export class SuggestionPage {
     f.reset();
   }
 
+  onCheckSuggestion(item){
+    this.dataList.update(item.id, {etat: !item.etat});
+  }
+
 }
