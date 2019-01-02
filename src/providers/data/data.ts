@@ -161,10 +161,11 @@ export class DataProvider {
    * Ajotuer un nouveau deck
    * @param deck 
    */
-  addNewDeck(deck: Deck){
+  addNewDeck(deck: Deck, deckChain: number = 0){
     if(deck !== undefined){
       const firebaseRef = this.afDB.database.ref(cst.TBL_DECK).push({});
       deck.id = firebaseRef.key;
+      deck.chain = deckChain;
       firebaseRef.set(deck);   
       this.decks.push(deck);
     }
@@ -196,7 +197,8 @@ export class DataProvider {
         win: deck.win,
         loose: deck.loose,
         draw: deck.draw,
-        nbGames: deck.nbGames
+        nbGames: deck.nbGames,
+        chain: deck.chain
       });
 
       // Mettre à jour tous les matchs associés

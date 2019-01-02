@@ -17,6 +17,7 @@ export class Deck{
                 public win: number = 0,
                 public loose: number = 0,
                 public draw: number = 0,
-                public nbGames: number = 0) {
+                public nbGames: number = 0,
+                public chain: number = 0) {
     }
 }
