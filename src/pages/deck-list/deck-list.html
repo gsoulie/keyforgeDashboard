@@ -55,6 +55,9 @@
           <img src="{{ logoUntamed.faction.url }}"/>
           <font color="'#000000'"><b>x{{ logoUntamed?.nb }}</b></font> 
         </ion-col>
+        <ion-col col-center text-center>
+
+        </ion-col>
       </ion-row>
     </ion-grid>
   </div>
@@ -64,7 +67,10 @@
       <p><i>{{ item?.player?.nom }}</i></p>
       <p><font color="'#000000'" *ngIf="item?.aombres > 0">AOmbres : <ion-badge>{{ item?.aombres }}</ion-badge> |</font> 
         <font color="'#000000'" *ngIf="item?.creatures > 0">Créatures : <ion-badge>{{ item?.creatures }}</ion-badge> |</font> 
-        <font color="'#000000'" *ngIf="item?.rares > 0">Rares : <ion-badge>{{ item?.rares }}</ion-badge></font></p>
+        <font color="'#000000'" *ngIf="item?.rares > 0">Rares : <ion-badge>{{ item?.rares }}</ion-badge></font>
+        <font color="'#000000'" *ngIf="item?.chain > 0"> | Chain : <ion-badge color="danger">{{ item?.chain }}</ion-badge></font>
+      </p>  
+      
       <img src="{{ item?.faction1?.url }}" item-right/>
       <img src="{{ item?.faction2?.url }}" item-right/>
       <img src="{{ item?.faction3?.url }}" item-right/>
