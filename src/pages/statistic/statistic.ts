@@ -35,43 +35,14 @@ export class StatisticPage {
       this.decksObservable = this.deckList.valueChanges().map(items => items.sort(this.tools.predicateBy('win')).reverse());
       this.decksObservable.subscribe((res) => {
         this.decks = res as any[];
+
+        // loading decklist in combo
         this.comboDeck = res as any[];
-        this.comboDeck.sort(this.tools.predicateBy('deckName')).reverse();
+        this.comboDeck.sort(this.tools.predicateBy('deckName'));
         this.comboDeck.push({deckName: "Tous"});
 
-        for(let i = 0; i < this.decks.length; i++){
-          if(this.decks[i].deckName !== 'Tous'){
-            let pourcentWin = 0;
-            let pourcentLoose = 0;
-            let pourcentDraw = 0;
-      
-            if(this.decks[i].nbGames > 0){
-              pourcentWin = this.decks[i].win * (100/this.decks[i].nbGames);
-              pourcentLoose = this.decks[i].loose * (100/this.decks[i].nbGames);
-              pourcentDraw = this.decks[i].draw * (100/this.decks[i].nbGames);
-              this.decks[i]['pourcentWin'] = pourcentWin.toFixed(0);
-              this.decks[i]['pourcentLoose'] = pourcentLoose.toFixed(0);
-              this.decks[i]['pourcentDraw'] = pourcentDraw.toFixed(0);
-            }
-
-            this.decksTemp.push({
-              player: this.decks[i].player,
-              deckName: this.decks[i].deckName,
-              win: this.decks[i].win,
-              loose: this.decks[i].loose,
-              draw: this.decks[i].draw,
-              nbGames: this.decks[i].nbGames,
-              faction1: this.decks[i].faction1,
-              faction2: this.decks[i].faction2,
-              faction3: this.decks[i].faction3, 
-              pourcentWin: pourcentWin.toFixed(0),
-              pourcentLoose: pourcentLoose.toFixed(0),
-              pourcentDraw: pourcentDraw.toFixed(0)
-            })
-          }
-          
-        }
-        this.decksTemp.sort(this.tools.predicateBy('pourcentWin')).reverse();
+        // calculate stats for each deck
+        this.calculeStat(this.decks);
         loader.dismiss();
       })
     } catch(e) {
@@ -79,35 +50,27 @@ export class StatisticPage {
     }
   }
 
+  /**
+   * Deck filtering
+   * @param ev 
+   */
   filteringItem(ev){
     // set searchText to the value of the searchbar
     var searchText = ev;
 
     // Avoid research if searchtext is empty
     if (!searchText || searchText.trim() === '' || searchText === 'Tous') {
+      console.log("filtering : tous");
+      // All decks
       this.decksObservable = this.deckList.valueChanges().map(items => items.sort(this.tools.predicateBy('win')).reverse());
       this.decksObservable.subscribe((res) => {
         this.decks = res as any[];
-        this.decks.forEach(deck => {
-          let pourcentWin = 0;
-          let pourcentLoose = 0;
-          let pourcentDraw = 0;
-    
-          if(deck.nbGames > 0){
-            pourcentWin = deck.win * (100/deck.nbGames);
-            pourcentLoose = deck.loose * (100/deck.nbGames);
-            pourcentDraw = deck.draw * (100/deck.nbGames);
-            deck['pourcentWin'] = pourcentWin.toFixed(0);
-            deck['pourcentLoose'] = pourcentLoose.toFixed(0);
-            deck['pourcentDraw'] = pourcentDraw.toFixed(0);
-          }
-        });
-
-        this.decks.sort(this.tools.predicateBy('pourcentWin')).reverse();
+        this.calculeStat(this.decks);
       })
       return;
     }
     
+    // Filtering on specific deck
     this.decksObservable = this.deckList.valueChanges().map(items => items.filter((deck) => {
       if (deck.deckName.toLowerCase().indexOf(searchText.toLowerCase()) > -1) {
         return true;
@@ -115,25 +78,50 @@ export class StatisticPage {
       return false;
     }));
 
+    // loop on observable and calculate stat
     this.decksObservable.subscribe((res) => {
       this.decks = res as any[];
-      this.decks.forEach(deck => {
+      this.calculeStat(this.decks);
+    })
+  }
+
+  calculeStat(deckDataset){
+    if(deckDataset){
+      this.decksTemp = [];
+      for(let i = 0; i < deckDataset.length; i++){
+        if(deckDataset[i].deckName !== 'Tous'){
         let pourcentWin = 0;
         let pourcentLoose = 0;
         let pourcentDraw = 0;
-  
-        if(deck.nbGames > 0){
-          pourcentWin = deck.win * (100/deck.nbGames);
-          pourcentLoose = deck.loose * (100/deck.nbGames);
-          pourcentDraw = deck.draw * (100/deck.nbGames);
-          deck['pourcentWin'] = pourcentWin.toFixed(0);
-          deck['pourcentLoose'] = pourcentLoose.toFixed(0);
-          deck['pourcentDraw'] = pourcentDraw.toFixed(0);
+      
+        if(deckDataset[i].nbGames > 0){
+          pourcentWin = deckDataset[i].win * (100/deckDataset[i].nbGames);
+          pourcentLoose = deckDataset[i].loose * (100/deckDataset[i].nbGames);
+          pourcentDraw = deckDataset[i].draw * (100/deckDataset[i].nbGames);
+          deckDataset[i]['pourcentWin'] = pourcentWin.toFixed(0);
+          deckDataset[i]['pourcentLoose'] = pourcentLoose.toFixed(0);
+          deckDataset[i]['pourcentDraw'] = pourcentDraw.toFixed(0);
         }
-      });
-
-      this.decks.sort(this.tools.predicateBy('pourcentWin')).reverse();
-    })
+      
+        this.decksTemp.push({
+          player: deckDataset[i].player,
+          deckName: deckDataset[i].deckName,
+          win: deckDataset[i].win,
+          loose: deckDataset[i].loose,
+          draw: deckDataset[i].draw,
+          nbGames: deckDataset[i].nbGames,
+          faction1: deckDataset[i].faction1,
+          faction2: deckDataset[i].faction2,
+          faction3: deckDataset[i].faction3, 
+          pourcentWin: pourcentWin.toFixed(0),
+          pourcentLoose: pourcentLoose.toFixed(0),
+          pourcentDraw: pourcentDraw.toFixed(0)
+        })
+        }
+        
+      }
+      this.decksTemp.sort(this.tools.predicateBy('pourcentWin')).reverse();
+    }
   }
 
 }
