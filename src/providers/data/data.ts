@@ -194,11 +194,11 @@ export class DataProvider {
         faction3: deck.faction3,
         player: deck.player,
         rares: deck.rares || 0,
-        win: deck.win,
-        loose: deck.loose,
-        draw: deck.draw,
-        nbGames: deck.nbGames,
-        chain: deck.chain
+        win: deck.win || 0,
+        loose: deck.loose || 0,
+        draw: deck.draw || 0,
+        nbGames: deck.nbGames || 0,
+        chain: deck.chain || 0
       });
 
       // Mettre à jour tous les matchs associés
@@ -250,7 +250,7 @@ export class DataProvider {
         default :
           break;
       }
-      deck1.nbGames++;
+      deck1.nbGames = deck1.nbGames ? deck1.nbGames += 1 : 1;
 
       this.updateDeck(deck1);
 
@@ -267,7 +267,8 @@ export class DataProvider {
         default :
           break;
       }
-      deck2.nbGames++;
+      //deck2.nbGames++;
+      deck2.nbGames = deck2.nbGames ? deck2.nbGames += 1 : 1;
       this.updateDeck(deck2);
 
     } else {
@@ -297,7 +298,8 @@ export class DataProvider {
       default :
         break;
     }
-    match.deck1.nbGames--;
+    match.deck1.nbGames = match.deck1.nbGames ? match.deck1.nbGames -= 1 : 0;
+    //match.deck1.nbGames--;
 
     this.updateDeck(match.deck1);
 
@@ -314,7 +316,9 @@ export class DataProvider {
       default :
         break;
     }
-    match.deck2.nbGames--;
+    //match.deck2.nbGames--;
+    match.deck2.nbGames = match.deck2.nbGames ? match.deck2.nbGames -= 1 : 0;
+
     this.updateDeck(match.deck2);
 
     if(index >= 0){
