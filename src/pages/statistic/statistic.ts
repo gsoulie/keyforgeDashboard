@@ -90,37 +90,37 @@ export class StatisticPage {
       this.decksTemp = [];
       for(let i = 0; i < deckDataset.length; i++){
         if(deckDataset[i].deckName !== 'Tous'){
-        let pourcentWin = 0;
-        let pourcentLoose = 0;
-        let pourcentDraw = 0;
-      
-        if(deckDataset[i].nbGames > 0){
-          pourcentWin = deckDataset[i].win * (100/deckDataset[i].nbGames);
-          pourcentLoose = deckDataset[i].loose * (100/deckDataset[i].nbGames);
-          pourcentDraw = deckDataset[i].draw * (100/deckDataset[i].nbGames);
-          deckDataset[i]['pourcentWin'] = pourcentWin.toFixed(0);
-          deckDataset[i]['pourcentLoose'] = pourcentLoose.toFixed(0);
-          deckDataset[i]['pourcentDraw'] = pourcentDraw.toFixed(0);
-        }
-      
-        this.decksTemp.push({
-          player: deckDataset[i].player,
-          deckName: deckDataset[i].deckName,
-          win: deckDataset[i].win,
-          loose: deckDataset[i].loose,
-          draw: deckDataset[i].draw,
-          nbGames: deckDataset[i].nbGames,
-          faction1: deckDataset[i].faction1,
-          faction2: deckDataset[i].faction2,
-          faction3: deckDataset[i].faction3, 
-          pourcentWin: pourcentWin.toFixed(0),
-          pourcentLoose: pourcentLoose.toFixed(0),
-          pourcentDraw: pourcentDraw.toFixed(0)
-        })
+          let pourcentWin = 0;
+          let pourcentLoose = 0;
+          let pourcentDraw = 0;
+        
+          if(deckDataset[i].nbGames > 0){
+            pourcentWin = deckDataset[i].win * (100/deckDataset[i].nbGames);
+            pourcentLoose = deckDataset[i].loose * (100/deckDataset[i].nbGames);
+            pourcentDraw = deckDataset[i].draw * (100/deckDataset[i].nbGames);
+            deckDataset[i]['pourcentWin'] = pourcentWin.toFixed(0);
+            deckDataset[i]['pourcentLoose'] = pourcentLoose.toFixed(0);
+            deckDataset[i]['pourcentDraw'] = pourcentDraw.toFixed(0);
+          }
+        
+          this.decksTemp.push({
+            player: deckDataset[i].player,
+            deckName: deckDataset[i].deckName,
+            win: deckDataset[i].win,
+            loose: deckDataset[i].loose,
+            draw: deckDataset[i].draw,
+            nbGames: deckDataset[i].nbGames,
+            faction1: deckDataset[i].faction1,
+            faction2: deckDataset[i].faction2,
+            faction3: deckDataset[i].faction3, 
+            pourcentWin: pourcentWin.toFixed(0),
+            pourcentLoose: pourcentLoose.toFixed(0),
+            pourcentDraw: pourcentDraw.toFixed(0)
+          })
         }
         
       }
-      this.decksTemp.sort(this.tools.predicateBy('pourcentWin')).reverse();
+      this.decksTemp.sort(this.tools.predicateBy2('pourcentWin')).reverse();
     }
   }
 
