@@ -7,13 +7,20 @@
 
   <ion-content>
     <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
+      <button ion-item *ngFor="let p of pages" (click)="openPage(p)" no-lines menuClose>
+          <ion-icon name="{{p.icon}}" item-left></ion-icon>
+          {{p.title}}
       </button>
     </ion-list>
-    <button ion-item no-lines menuClose="deconnexion" (click)="onDisconnect()">
+    <ion-list [style.marginTop]="'40px'">
+    <button ion-item (click)="onDisconnect()" menuClose no-lines>
+      <ion-icon name="md-power" item-left></ion-icon>
       Déconnexion
     </button>
+  </ion-list>
+    <!-- <button ion-item no-lines menuClose="deconnexion" (click)="onDisconnect()">
+      Déconnexion
+    </button> -->
   </ion-content>
 
 </ion-menu>

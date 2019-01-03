@@ -18,7 +18,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = HomePage;
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any, icon: string}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
@@ -29,11 +29,11 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Games', component: HomePage },
-      { title: 'Players', component: PlayersListPage },
-      { title: 'Decks', component: DeckListPage },
-      { title: 'Stats', component: StatisticPage },
-      { title: 'Suggestions', component: SuggestionPage}
+      { title: 'Games', component: HomePage, icon:"md-people" },
+      { title: 'Players', component: PlayersListPage, icon:"md-person" },
+      { title: 'Decks', component: DeckListPage, icon:"md-albums" },
+      { title: 'Stats', component: StatisticPage, icon:"md-medal" },
+      { title: 'Suggestions', component: SuggestionPage, icon:"md-help"}
     ];
 
     const authObserver = afAuth.authState
