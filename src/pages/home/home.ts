@@ -161,6 +161,7 @@ export class HomePage {
           text: 'Supprimer',
           handler: () => {
             this.dataService.deleteMatch(selectedMatch);
+            this.matchs2 = [];
             this.getMatchs();
           }
         }
