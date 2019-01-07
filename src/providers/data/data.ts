@@ -179,7 +179,7 @@ export class DataProvider {
   updateDeck(deck: Deck){
     // Recherche du deck
     let index = this.tools.arraySearch(deck.deckName.toUpperCase(),this.decks,"deckName");
-    console.log("[--- updateDeck ---] index = " + index + ' / ' + JSON.stringify(deck));
+    //console.log("[--- updateDeck ---] index = " + index + ' / ' + JSON.stringify(deck));
     // deck trouvé ?
     if(index >= 0){
       // oui, on le met à jour
@@ -280,8 +280,7 @@ export class DataProvider {
    * Supprimer un match
    * @param match 
    */
-  deleteMatch(match: Match){
-    this.afDB.database.ref(cst.TBL_MATCH + '/' + match.id).set(null);
+  deleteMatch(match: Match, callback){
     let index = this.tools.arraySearch2(match.id,this.matchs,"id");
     
     // mise à jour des résultats pour les 2 decks
@@ -299,8 +298,7 @@ export class DataProvider {
         break;
     }
     match.deck1.nbGames = match.deck1.nbGames ? match.deck1.nbGames -= 1 : 0;
-    //match.deck1.nbGames--;
-
+    
     this.updateDeck(match.deck1);
 
     switch(match.deck2Result){
@@ -318,9 +316,15 @@ export class DataProvider {
     }
     //match.deck2.nbGames--;
     match.deck2.nbGames = match.deck2.nbGames ? match.deck2.nbGames -= 1 : 0;
-
+    
     this.updateDeck(match.deck2);
 
+    this.afDB.database.ref(cst.TBL_MATCH + '/' + match.id).set(null)
+    .then(() => {
+      if(callback){callback();}
+    })
+    .catch((err) => console.log("delete match - " + err.toString()));
+    
     if(index >= 0){
       this.matchs.splice(index,1);
     } else {

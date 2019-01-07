@@ -32,7 +32,6 @@ export class MatchNewPage {
     private toastCtrl: ToastController,
     private alertCtrl: AlertController) {
       this.decks = this.dataService.getDecks();
-      console.log("deck : " + JSON.stringify(this.decks));
       this.players = this.dataService.getPlayers();      
       this.resStatus = [cst.GAME_WIN,cst.GAME_LOOSE,cst.GAME_DRAW];
   }

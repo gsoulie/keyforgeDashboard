@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title class="navTitle">{{ (matchs2)?.length }} Match(s)</ion-title>
+    <ion-title class="navTitle">Matchs</ion-title>
     <ion-buttons end>
       <button ion-button color="white" clear (click)="onAddNewMatch()">
         Ajouter une partie
@@ -58,19 +58,9 @@
           </ion-item>
         </div>
       </ion-col>
-      <!-- <ion-col no-padding col-auto text-center>
-        <ion-item class="versus" no-lines no-padding>
-          <button class="mybutton" ion-button clear icon-only (click)="deleteMatch(match)">
-              <ion-icon color="dark" name="md-trash"></ion-icon>
-          </button>
-        </ion-item>
-      </ion-col> -->
     </ion-row>
   </ion-grid>
   <ion-infinite-scroll (ionInfinite)="scrollHandler($event)">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>
-     <!-- <ion-fab top right>
-      <button ion-fab class="fab_add" color="primary" aria-label="tags" (click)="onAddNewMatch()"><ion-icon color="dark" name="md-add"></ion-icon></button>
-    </ion-fab> -->
 </ion-content>

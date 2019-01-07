@@ -14,6 +14,7 @@ import { cst } from '../../models/constantes';
 export class HomePage {
 
   dataList: AngularFireList<any>;
+  deckDataList: AngularFireList<any>;
   matchs: Observable<any[]>;
   deckList: AngularFireList<any>;
   deckObservable: Observable<any[]>;
@@ -70,14 +71,14 @@ export class HomePage {
    */
   getMatchs(){
     if(this.filteringMode == false){
-      this.dataList = this.afDB.list(cst.TBL_DECK, ref => ref.orderByChild('deckName'));
-      this.deckObservable = this.dataList.valueChanges();
+      this.deckDataList = this.afDB.list(cst.TBL_DECK, ref => ref.orderByChild('deckName'));
+      this.deckObservable = this.deckDataList.valueChanges();
       this.deckObservable.subscribe((res) => {
         this.decks = res as any[];
         this.decks.push({deckName: "Tous"});
       })
 
-      const loader = this.loadingCtrl.create({
+      var loader = this.loadingCtrl.create({
         content: "Chargement des parties..."
       });
       loader.present();
@@ -115,7 +116,6 @@ export class HomePage {
     // Avoid research if searchtext is empty
     if (!searchText || searchText.trim() === '' || searchText === 'Tous') {
       this.filteringMode = false;
-      //this.matchs = this.dataList.valueChanges().map(items => items.sort().reverse());
       this.lastItem = null;
       this.matchs2 = [];
       this.getMatchs();
@@ -139,7 +139,11 @@ export class HomePage {
   }
 
   onAddNewMatch(){
-    this.navCtrl.push(MatchNewPage,{callback: () => {this.matchs2 = [];this.getMatchs();}})
+    this.navCtrl.push(MatchNewPage,{callback: () => {
+      this.filteringMode = false;
+      this.lastItem = null;
+      this.matchs2 = [];
+      this.getMatchs();}})
   }
 
   onOpenMatchDetail(match){
@@ -160,9 +164,14 @@ export class HomePage {
         {
           text: 'Supprimer',
           handler: () => {
-            this.dataService.deleteMatch(selectedMatch);
-            this.matchs2 = [];
-            this.getMatchs();
+            this.dataService.deleteMatch(selectedMatch, () => {
+
+              this.filteringMode = false;
+              this.lastItem = null;
+              this.matchs = null;
+              this.matchs2 = [];
+              this.getMatchs();
+            });
           }
         }
       ]
