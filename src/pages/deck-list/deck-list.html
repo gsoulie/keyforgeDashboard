@@ -64,7 +64,11 @@
   <div class="divCard" *ngFor="let item of decks | async" (click)="onOpenDeckDetail(item)">
     <ion-item class="cardHeader" no-padding no-lines>
       <font class="cardTitle"><b>{{ item?.deckName }}</b></font>
-      <p><i>{{ item?.player?.nom }}</i></p>
+      
+      <p><button ion-button [style.color]="'#333'" style="text-transform: none;" disabled="true" clear><i>{{ item?.player?.nom }}</i></button>
+        <button class="analyzerButton" clear ion-button (click)="onAnalyzeDeck($event,item?.deckName)">
+            Deck analyzer&nbsp;&nbsp;<ion-icon name="md-open"></ion-icon>
+          </button></p>
       <p><font color="'#000000'" *ngIf="item?.aombres > 0">AOmbres : <ion-badge>{{ item?.aombres }}</ion-badge> |</font> 
         <font color="'#000000'" *ngIf="item?.creatures > 0">Créatures : <ion-badge>{{ item?.creatures }}</ion-badge> |</font> 
         <font color="'#000000'" *ngIf="item?.rares > 0">Rares : <ion-badge>{{ item?.rares }}</ion-badge></font>

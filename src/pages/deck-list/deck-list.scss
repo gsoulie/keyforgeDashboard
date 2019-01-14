@@ -22,4 +22,10 @@ page-deck-list {
     ion-col{
         height: 100%;
     }
+    .divCard{
+        z-index: 90;
+    }
+    .analyzerButton{
+        z-index: 95;
+    }
 }
