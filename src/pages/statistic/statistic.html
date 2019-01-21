@@ -14,6 +14,10 @@
   </ion-header>
   
   <ion-content padding class="window">
+    <div style="display: block">
+      <canvas #lineCanvas></canvas>
+    </div>
+
     <div class="divCard" *ngFor="let item of decksTemp">
       <ion-item class="cardHeader" no-padding no-lines>
         <font class="cardTitle"><b>{{ item?.deckName }}</b></font>

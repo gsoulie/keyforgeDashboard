@@ -1,7 +1,13 @@
 page-suggestion {
     form{
-        width: 400px;
+        width: 80%;
         margin: auto;
+    }
+    .submitButton{
+        width: 400px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
     .checkButton{
         width: 45px;

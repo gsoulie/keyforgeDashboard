@@ -92,4 +92,9 @@ export class MyApp {
     confirm.present();
 
   }
+  
+  onOpenRulebook(){
+    let url = "https://kop-cdn.keyforgegame.com/filer_public/30/03/30032847-fa82-46a3-a28b-984efc5a91ca/keyforge_rulebook_v8-compressed.pdf?fbclid=IwAR07WNrKYQoGT0ARh3lZDmlgrl65UeB-JYKwfHAsMpHpd5YdrEAE77Gbrfs";
+    window.open(url,'_system','location=yes');
+  }
 }
