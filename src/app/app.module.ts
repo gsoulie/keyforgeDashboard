@@ -25,7 +25,12 @@ import { DeckNewPage } from '../pages/deck-new/deck-new';
 import { AuthserviceProvider } from '../providers/authservice/authservice';
 
 export const firebaseConfig = {
-
+  apiKey: "<YOUR_FIREBASE_API_KEY>",
+  authDomain: "<YOUR_FIREBASE_AUTH_DOMAIN>",
+  databaseURL: "<YOUR_FIREBASE_DB_URL>",
+  projectId: "<YOUR_PROJECT_ID>",
+  storageBucket: "",
+  messagingSenderId: "1039882347370"
 }
 
 @NgModule({
