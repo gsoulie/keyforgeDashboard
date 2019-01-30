@@ -1,9 +1,10 @@
-# keyforgeStats
+# keyforgeDashboard
 
 ## Environment 
 
 * Ionic 3
-* Backend Firebase with Authentication
+* Backend Firebase (realtime DB) with Authentication
+* Angularfire
 
 ## Features
 
