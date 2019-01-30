@@ -41,10 +41,12 @@ export class StatisticPage implements OnInit{
     let borderColor = [];
     let i = 0;
     this.decksTemp.forEach(elt => {
-      labelList.push(elt.deckName + " (" + elt.win + "/" + elt.loose + ")");
-      dataList.push(elt.pourcentWin);
-      backgroundColor.push('rgba(255,55,' + Math.trunc((i*10)/2)+',0.6)');//13
-      borderColor.push('rgba(255,55,' + Math.trunc((i*10)/2)+',1)');//13
+      if(i < 10){
+        labelList.push(elt.deckName + " (" + elt.win + "/" + elt.loose + ")");
+        dataList.push(elt.pourcentWin);
+        backgroundColor.push('rgba(255,55,' + Math.trunc((i*10)/2)+',0.6)');//13
+        borderColor.push('rgba(255,55,' + Math.trunc((i*10)/2)+',1)');//13
+      }
       i++;
     });
     // fill the chart with gradient
@@ -61,7 +63,7 @@ export class StatisticPage implements OnInit{
           labels: labelList,//["Deck1", "Deck2", "Deck3", "Deck4", "Deck5", "Deck6", "Deck7"],
           datasets: [
               {
-                  label: "% Win",
+                  label: "Top 10 % Win",
                   fill: true, // remplissage de la zone sous le graphe
                   lineTension: 0.5, // lissage de la courbe
                   backgroundColor:  backgroundColor,//"rgba(0,0,0,0.1)",//grd,
