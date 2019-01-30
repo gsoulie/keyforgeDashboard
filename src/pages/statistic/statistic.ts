@@ -26,20 +26,24 @@ export class StatisticPage implements OnInit{
   constructor(public loadingCtrl: LoadingController, 
     public afDB: AngularFireDatabase,
     private tools: ToolsProvider) {
-    this.getStats();
-    
+    this.getStats();    
   }
 
-  ngOnInit(){
-    
+  ngOnInit(){    
   }
+
+  /**
+   * Génération du graphique
+   */
   onGenerateChart(){
    
-    let dataList = [];
-    let labelList = [];
+    let dataList = [];  // lignes de données
+    let labelList = []; // labels de chaque ligne
     let backgroundColor = [];
     let borderColor = [];
     let i = 0;
+
+    // Parcours des decks et création du dataset pour le graphique
     this.decksTemp.forEach(elt => {
       if(i < 10){
         labelList.push(elt.deckName + " (" + elt.win + "/" + elt.loose + ")");
@@ -89,37 +93,17 @@ export class StatisticPage implements OnInit{
       }
    });
   }
-/*
-  public barChartOptions:any = {
-    scaleShowVerticalLines: false,
-    responsive: true
-  };
-  public barChartLabels:string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-  public barChartType:string = 'bar';
-  public barChartLegend:boolean = true;
- 
-  public barChartData:any[] = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
-  ];
- 
-  // events
-  public chartClicked(e:any):void {
-    console.log(e);
-  }
- 
-  public chartHovered(e:any):void {
-    console.log(e);
-  }
- */
 
+  /**
+   * Construction de la liste des decks avec leurs stats
+   */
   getStats(){
     const loader = this.loadingCtrl.create({
       content: "Chargement des parties..."
     });
     loader.present();
     try{
-      this.deckList = this.afDB.list(cst.TBL_DECK, ref => ref.orderByChild('deckName'));
+      this.deckList = this.afDB.list(cst.TBL_DECK, ref => ref.orderByChild('deckName'));  // récupération des decks dans firebase
       this.decksObservable = this.deckList.valueChanges().map(items => items.sort(this.tools.predicateBy('win')).reverse());
       this.decksObservable.subscribe((res) => {
         this.decks = res as any[];
@@ -143,10 +127,10 @@ export class StatisticPage implements OnInit{
    * @param ev 
    */
   filteringItem(ev){
-    // set searchText to the value of the searchbar
+    // Texte de recherche
     var searchText = ev;
 
-    // Avoid research if searchtext is empty
+    // Si texte vide, afficher tous les decks
     if (!searchText || searchText.trim() === '' || searchText === 'Tous') {
       console.log("filtering : tous");
       // All decks
@@ -158,7 +142,7 @@ export class StatisticPage implements OnInit{
       return;
     }
     
-    // Filtering on specific deck
+    // Filtre sur un deck spécifique
     this.decksObservable = this.deckList.valueChanges().map(items => items.filter((deck) => {
       if (deck.deckName.toLowerCase().indexOf(searchText.toLowerCase()) > -1) {
         return true;
@@ -166,13 +150,17 @@ export class StatisticPage implements OnInit{
       return false;
     }));
 
-    // loop on observable and calculate stat
+    // Boucle de calcul des stats
     this.decksObservable.subscribe((res) => {
       this.decks = res as any[];
       this.calculeStat(this.decks);
     })
   }
 
+  /**
+   * Calcul des stats pour un deck
+   * @param deckDataset 
+   */
   calculeStat(deckDataset){
     if(deckDataset){
       this.decksTemp = [];

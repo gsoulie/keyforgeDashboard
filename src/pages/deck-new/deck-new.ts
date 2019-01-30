@@ -35,10 +35,13 @@ export class DeckNewPage {
     public afDB: AngularFireDatabase,
     public toastCtrl: ToastController,
     private dataService: DataProvider) {
-      this.players = this.dataService.getPlayers();
+      this.players = this.dataService.getPlayers(); // chargement des joueurs
   }
 
-  onAddNewDeck(/*f: NgForm*/){
+  /**
+   * Ajout d'un nouveau deck
+   */
+  onAddNewDeck(){
     // check si 3 factions sont sélectionnées
     let factionArray = [];
     let selectedFactions = [];

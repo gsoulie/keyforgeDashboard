@@ -113,7 +113,7 @@ export class MatchNewPage {
   }
 
   /**
-   * 
+   * Sélection d'un joueur
    * @param playerActif : prend la valeur 1 ou 2
    */
   onChoosePlayer(activePlayer){

@@ -13,6 +13,7 @@ import { Deck } from '../../models/deck';
   templateUrl: 'deck-detail.html',
 })
 export class DeckDetailPage implements OnInit{
+
   logoDis: any = {selected: false, faction: cst.FACTION_DIS};
   logoBrobnar: any = {selected: false, faction: cst.FACTION_BROBNAR};
   logoLogos: any = {selected: false, faction: cst.FACTION_LOGOS};
@@ -33,11 +34,9 @@ export class DeckDetailPage implements OnInit{
     public tools: ToolsProvider,
     public toastCtrl: ToastController,
     private dataService: DataProvider) {
-      this.players = this.dataService.getPlayers();
+
+      this.players = this.dataService.getPlayers(); // chargement des joueurs
       this.deckDetail = this.navParams.get("deckDetail");
-      console.log("player " + this.deckDetail.player.nom);
-      console.log("deck paramètre : " + JSON.stringify(this.deckDetail));
-      
       let factionArray = [];
     
       factionArray.push(this.logoDis);
@@ -60,8 +59,11 @@ export class DeckDetailPage implements OnInit{
     this.selectedPlayer = this.deckDetail.player.nom;
   }
 
+  /**
+   * Vérifie si 3 factions sont sélectionnées
+   */
   onUpdateDeck(){
-    // check si 3 factions sont sélectionnées
+    
     let playerObject = null;
     let factionArray = [];
     let selectedFactions = [];
@@ -97,23 +99,12 @@ export class DeckDetailPage implements OnInit{
       return;
     }
     
+    this.deckDetail.faction1 = selectedFactions[0].faction;
+    this.deckDetail.faction2 = selectedFactions[1].faction;
+    this.deckDetail.faction3 = selectedFactions[2].faction;
+    this.deckDetail.player = playerObject;
 
-/*
-    this.dataService.updateDeck(new Deck(this.deckDetail.deckName,this.deckDetail.aombres,this.deckDetail.creatures,
-      this.deckDetail.rares,
-      selectedFactions[0].faction,
-      selectedFactions[1].faction,
-      selectedFactions[2].faction,
-      playerObject));*/
-
-      console.log(JSON.stringify(playerObject));
-
-      this.deckDetail.faction1 = selectedFactions[0].faction;
-      this.deckDetail.faction2 = selectedFactions[1].faction;
-      this.deckDetail.faction3 = selectedFactions[2].faction;
-      this.deckDetail.player = playerObject;
-
-    this.dataService.updateDeck(this.deckDetail);
+    this.dataService.updateDeck(this.deckDetail); // Mise à jour du deck en base
       
     this.toastCtrl.create({
       message: "Le deck " + this.deckName + " a bien été mis à jour",
@@ -122,6 +113,10 @@ export class DeckDetailPage implements OnInit{
     this.navCtrl.pop();
   }
 
+  /**
+   * Gestion de l'UI sur la sélection d'une faction
+   * @param faction 
+   */
   onSelect(faction){
     if(faction){
       faction.selected = !faction.selected;

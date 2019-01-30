@@ -22,19 +22,17 @@ export class LoginPage {
               public loadingCtrl: LoadingController) {
 
     this.loginForm = formBuilder.group({
-                    email: ['', Validators.compose([Validators.required, 
-                    EmailValidator.isValid])],
-                    password: ['', Validators.compose([Validators.minLength(6), 
-                    Validators.required])]
+      email: ['', Validators.compose([Validators.required, 
+      EmailValidator.isValid])],
+      password: ['', Validators.compose([Validators.minLength(6), 
+      Validators.required])]
     });
   }
 
   goToResetPassword(){
-    //this.navCtrl.push(ResetPasswordPage);
   }
   
   createAccount(){
-    //this.navCtrl.push(SignupPage);
     this.signupUser();
   }
 
@@ -42,8 +40,8 @@ export class LoginPage {
     if (!this.loginForm.valid){
       console.log(this.loginForm.value);
       let alert = this.alertCtrl.create({
-        title: "Authentification failed",
-        message: "Please enter valid username and password",
+        title: "Echec authentification",
+        message: "Veuillez saisir un identifiant et un mot de passe valides",
         buttons: [
           {
             text: "Ok",
@@ -59,7 +57,7 @@ export class LoginPage {
       }, error => {
         this.loading.dismiss().then( () => {
           let alert = this.alertCtrl.create({
-            title: "Authentification failed",
+            title: "Echec authentification",
             message: error.message,
             buttons: [
               {

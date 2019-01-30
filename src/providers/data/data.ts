@@ -34,14 +34,13 @@ export class DataProvider {
       .subscribe((res) => {
         this.decks = res as any[];
       });
-/*
-      this.afDB.list(cst.TBL_MATCH)
-      .valueChanges()
-      .subscribe((res) => {
-        this.matchs = res as any[];
-      });*/
   }
 
+  /**
+   * Surcharge fonction log console
+   * @param title 
+   * @param message 
+   */
   log(title: string = "", message: string = ""){
       console.log("[--- " + title + " ---] " + message);
   }

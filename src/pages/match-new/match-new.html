@@ -11,9 +11,6 @@
       <button ion-button no-padding block clear item-left (click)="onChooseDeck(1)" item-left>Sélectionner un deck</button>
       <button ion-button no-padding block clear item-left (click)="onChoosePlayer(1)" item-right>Sélectionner un joueur</button>
     </ion-item>
-    <!-- <ion-select class="combo" interface="action-sheet" placeholder="Sélectionnez le joueur" [(ngModel)] ="selectedPlayer" name="cbo">
-      <ion-option *ngFor="let player of players" [value]="player">{{ player.nom }}</ion-option>
-    </ion-select> -->
     <ion-item no-lines no-padding class="deckSelctionItem">
       <font class="cardTitle" item-left><b>{{ deck1?.deckName }}</b></font>
       <i>{{ player1?.nom }}</i>
@@ -22,7 +19,6 @@
       <img *ngIf="deck1" src="{{ deck1?.faction1.url }}" item-left/>
       <img *ngIf="deck1" src="{{ deck1?.faction2.url }}" item-left/>
       <img *ngIf="deck1" src="{{ deck1?.faction3.url }}" item-left/>
-      <!-- <font class="cardTitle" item-left><i>{{ deck1?.player.nom }}</i></font> -->
     </ion-item>
     <ion-item no-lines class="cardHeader" *ngIf="deck1">
       <ion-select item-left interface="action-sheet" placeholder="Résultat" [(ngModel)]="resWinDeck1" name="resPlayer1">
@@ -47,7 +43,6 @@
       <img *ngIf="deck2" src="{{ deck2?.faction1.url }}" item-left/>
       <img *ngIf="deck2" src="{{ deck2?.faction2.url }}" item-left/>
       <img *ngIf="deck2" src="{{ deck2?.faction3.url }}" item-left/>
-      <!-- <font class="cardTitle" item-left><i>{{ deck2?.player.nom }}</i></font> -->
     </ion-item>
     <ion-item no-lines class="cardHeader" *ngIf="deck2">
       <ion-select item-left interface="action-sheet" placeholder="Résultat" [(ngModel)]="resWinDeck2" name="resPlayer2">

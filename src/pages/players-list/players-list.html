@@ -4,11 +4,6 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>{{ (players | async)?.length }} Joueur(s)</ion-title>
-    <!-- <ion-buttons end>
-        <button ion-button color="white" clear (click)="onAddNewPlayer()">
-          Ajouter un joueur
-        </button>
-      </ion-buttons> -->
   </ion-navbar>
 </ion-header>
 
@@ -27,16 +22,12 @@
       </ion-row>
     </ion-grid>    
   </form>
-  <!-- <div class="divCard" *ngFor="let player of players | async">
-    <ion-item class="cardHeader" no-padding no-lines> -->
   <ion-list>
     <ion-item *ngFor="let player of players | async">
       <font class="cardTitle"><b>{{ player?.nom }}</b></font>
-      <!-- <p><font color="'#000000'">Nb de deck...</font></p> -->
       <button class="actionButton" ion-button icon-only clear item-right (click)="onDeletePlayer(player)">
         <ion-icon name="md-trash" color="arrow"></ion-icon>
       </button>
     </ion-item>
-  <!-- </div> -->
 </ion-list>
 </ion-content>

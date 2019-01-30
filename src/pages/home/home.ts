@@ -22,6 +22,7 @@ export class HomePage {
   matchs2: any[] = [];
   selectedDeck;
 
+  // variables pour la gestion du lazy loading
   @ViewChild(Content) content: Content; // ion-content 
   private direction: string = ""; // to get scroll direction
   private lastScrollTop: number = 0;
@@ -37,7 +38,7 @@ export class HomePage {
   }
 
   ngAfterViewInit() {
-    // Add scroll listener
+    // Listener sur scroll
     this.content.ionScrollEnd.subscribe((data) => {
       let currentScrollTop = data.scrollTop;
       if(currentScrollTop > this.lastScrollTop){
@@ -55,9 +56,9 @@ export class HomePage {
    */
   scrollHandler(infiniteScroll){
     setTimeout(() => {
-      // Update data only when scrolling down 
+      // Refresh uniquement si scroll vers le bas
       if(this.direction == 'down'){
-        // Update data only when end of page is detected
+        // Refresh uniquement lorsque la fin de page est atteinte
         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
           this.getMatchs();
         }
@@ -71,7 +72,7 @@ export class HomePage {
    */
   getMatchs(){
     if(this.filteringMode == false){
-      this.deckDataList = this.afDB.list(cst.TBL_DECK, ref => ref.orderByChild('deckName'));
+      this.deckDataList = this.afDB.list(cst.TBL_DECK, ref => ref.orderByChild('deckName'));  // récupération des matchs dans firebase
       this.deckObservable = this.deckDataList.valueChanges();
       this.deckObservable.subscribe((res) => {
         this.decks = res as any[];
@@ -83,6 +84,7 @@ export class HomePage {
       });
       loader.present();
 
+      // Récupération en tenant compte du lazy loading (chargement 20 par 20)
       if(this.lastItem === null){
         this.dataList = this.afDB.list(cst.TBL_MATCH, ref => ref.orderByChild('id').limitToLast(20));
       } else {
@@ -110,10 +112,10 @@ export class HomePage {
   }
 
   filteringItem(ev){
-    // set searchText to the value of the searchbar
+    // Texte de recherche
     var searchText = ev;
 
-    // Avoid research if searchtext is empty
+    // Si texte vide, charger tous les matchs
     if (!searchText || searchText.trim() === '' || searchText === 'Tous') {
       this.filteringMode = false;
       this.lastItem = null;

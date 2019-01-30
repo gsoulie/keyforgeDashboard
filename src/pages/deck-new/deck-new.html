@@ -12,7 +12,6 @@
         <ion-option *ngFor="let player of players" [value]="player">{{ player.nom }}</ion-option>
       </ion-select>
         </ion-item>
-      <!-- <form #f="ngForm" (ngSubmit)="onAddNewDeck(f)"> -->
         <ion-item class="formItem" no-lines>
           <ion-input placeholder="Nom du deck (obligatoire)" required type="text" [(ngModel)]="deckName"></ion-input>
         </ion-item>
@@ -28,9 +27,7 @@
         <ion-item class="formItem" no-lines>
           <ion-input placeholder="Nombre de chain" type="number" max="24" [(ngModel)]="deckChain"></ion-input>
         </ion-item>
-        <!-- <button ion-button clear class="formSubmitButton" type="submit" [disabled]="!f.valid">AJOUTER</button> -->
         
-      <!-- </form> -->
       <h4 text-center>Sélectionnez les factions</h4>
       <ion-grid [style.marginTop]="'10px'">
         <ion-row>
