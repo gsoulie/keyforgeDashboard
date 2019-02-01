@@ -8,23 +8,29 @@
   <ion-scroll scrollY="true" style="width: 100%; height: 100%;">
     <div class="cardForm">
       <ion-item class="formItem" no-lines>
+        <ion-label>Joueur :</ion-label>
         <ion-select class="combo" interface="action-sheet" placeholder="Sélectionnez le joueur" [(ngModel)]="selectedPlayer" name="selectedPlayer.nom">
           <ion-option *ngFor="let player of players" [value]="player.nom">{{ player.nom }}</ion-option>
         </ion-select>
       </ion-item>
       <ion-item class="formItem" no-lines>
+        <ion-label>Nom deck :</ion-label>
         <ion-input type="text" class="disabledFiled" [(ngModel)]="deckDetail.deckName" readonly="true"></ion-input>
       </ion-item>
       <ion-item class="formItem" no-lines>
+        <ion-label>AOmbres :</ion-label>
         <ion-input placeholder="AOmbres directes" type="number" [(ngModel)]="deckDetail.aombres"></ion-input>
       </ion-item>
       <ion-item class="formItem" no-lines>
+        <ion-label>Nb créatures :</ion-label>
         <ion-input placeholder="Nombre de créatures" type="number" [(ngModel)]="deckDetail.creatures"></ion-input>
       </ion-item>
       <ion-item class="formItem" no-lines>
+        <ion-label>Nb rares :</ion-label>
         <ion-input placeholder="Nombre de cartes rares" type="number" [(ngModel)]="deckDetail.rares"></ion-input>
       </ion-item>
       <ion-item class="formItem" no-lines>
+        <ion-label>Chains :</ion-label>
         <ion-input placeholder="Nombre de chain" type="number" max="24" [(ngModel)]="deckDetail.chain"></ion-input>
       </ion-item>
       

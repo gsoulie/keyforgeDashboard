@@ -1,5 +1,5 @@
 page-home {
-    img{
+    .factionPicto {
         height: 10%;
         width: 10%;
     }
@@ -20,11 +20,20 @@ page-home {
         margin-left: 10px;
     }
     .result_picto{
-        height: 45px;
-        width: 45px;
+        height: 10%;
+        width: 10%;
     }
     .divCard{
         height: auto;
+        border-radius: 10px;
+    }
+    .itemWin{
+        border: 2px solid #ffba00;
+        background-color: #ffefc9;
+    }
+    .itemLoose{
+        border: none;
+        background-color: white;
     }
     ion-toolbar{
         background-color: map-get($colors, primary);
@@ -37,5 +46,10 @@ page-home {
         margin-bottom: 5px;
         border-radius: 10px;
         padding: 10px;
+    }
+    .separator{
+        height: 1px;
+        width: 100%;
+        border-bottom: 1px dashed #bbb;
     }
 }

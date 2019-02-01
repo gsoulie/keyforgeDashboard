@@ -22,13 +22,13 @@
   <ion-grid *ngFor="let match of matchs2">
     <ion-row>
       <ion-col>
-        <div class="divCard">
+        <div class="divCard" [ngClass]="match?.deck1Result === 'Win' ? 'itemWin' : 'itemLoose'">
           <ion-item class="cardHeader" no-padding no-lines>
-            <img *ngIf="match?.deck1Result === 'Win'" class="result_picto" src="../assets/imgs/key_win.png" item-right/>
-            <img *ngIf="match?.deck1Result === 'Draw'" class="result_picto" src="../assets/imgs/key_draw.png" item-right/>
-            <img src="{{ match?.deck1?.faction1?.url }}" item-left/>
-            <img src="{{ match?.deck1?.faction2?.url }}" item-left/>
-            <img src="{{ match?.deck1?.faction3?.url }}" item-left/>
+            <!-- <img *ngIf="match?.deck1Result === 'Win'" class="result_picto" src="../assets/imgs/key_win.png" item-right/>
+            <img *ngIf="match?.deck1Result === 'Draw'" class="result_picto" src="../assets/imgs/key_draw.png" item-right/> -->
+            <img class="factionPicto" src="{{ match?.deck1?.faction1?.url }}" item-left/>
+            <img class="factionPicto" src="{{ match?.deck1?.faction2?.url }}" item-left/>
+            <img class="factionPicto" src="{{ match?.deck1?.faction3?.url }}" item-left/>
             <font class="cardTitle"><b>{{ match?.deck1.deckName }}</b></font>
             <p><font class="cardTitle"><ion-badge><i>{{ match?.player1.nom }}</i></ion-badge></font></p>
           </ion-item>
@@ -40,13 +40,13 @@
         </ion-item>
       </ion-col>
       <ion-col>
-        <div class="divCard" >
+        <div class="divCard" [ngClass]="match?.deck2Result === 'Win' ? 'itemWin' : 'itemLoose'">
           <ion-item class="cardHeader" no-padding no-lines>
-            <img *ngIf="match?.deck2Result === 'Win'" class="result_picto" src="../assets/imgs/key_win.png" item-left/>
-            <img *ngIf="match?.deck2Result === 'Draw'" class="result_picto" src="../assets/imgs/key_draw.png" item-left/>
-            <img src="{{ match?.deck2.faction1?.url }}" item-left/>
-            <img src="{{ match?.deck2.faction2?.url }}" item-left/>
-            <img src="{{ match?.deck2.faction3?.url }}" item-left/>
+            <!-- <img *ngIf="match?.deck2Result === 'Win'" class="result_picto" src="../assets/imgs/key_win.png" item-left/>
+            <img *ngIf="match?.deck2Result === 'Draw'" class="result_picto" src="../assets/imgs/key_draw.png" item-left/> -->
+            <img class="factionPicto" src="{{ match?.deck2.faction1?.url }}" item-left/>
+            <img class="factionPicto" src="{{ match?.deck2.faction2?.url }}" item-left/>
+            <img class="factionPicto" src="{{ match?.deck2.faction3?.url }}" item-left/>
             <font class="cardTitle"><b>{{ match?.deck2.deckName }}</b></font>
             <p><font class="cardTitle"><ion-badge><i>{{ match?.player2.nom }}</i></ion-badge></font></p>
             <button class="mybutton" ion-button clear icon-only item-right (click)="deleteMatch(match)">
@@ -56,6 +56,7 @@
         </div>
       </ion-col>
     </ion-row>
+    <div class="separator"></div>
   </ion-grid>
   <ion-infinite-scroll (ionInfinite)="scrollHandler($event)">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
