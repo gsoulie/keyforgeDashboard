@@ -1,9 +1,8 @@
 import { DataProvider } from '../../providers/data/data';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 
-@IonicPage()
 @Component({
   selector: 'page-player-detail',
   templateUrl: 'player-detail.html',

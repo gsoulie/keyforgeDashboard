@@ -3,10 +3,8 @@ import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 import { DataProvider } from './../../providers/data/data';
 import { NgForm } from '@angular/forms';
 import { Component } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
 import { cst } from '../../models/constantes';
 
-@IonicPage()
 @Component({
   selector: 'page-suggestion',
   templateUrl: 'suggestion.html',

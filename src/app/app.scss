@@ -29,12 +29,6 @@ ion-header{
     height: 45px;
 }
 .cardForm{
-    /*top:50%;
-    left:50%;
-    padding:15px;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);*/
     position: absolute;
     left:50%;
     padding:15px;
@@ -49,12 +43,12 @@ ion-header{
     padding-left: 10px;
     border-radius: 10px;
     background-color: transparent;
-    float: center;
-    
+    float: center;    
 }
 .cardTitle{
     font-size: 1.1em;
     margin-right: 10px;
+    width: 100%;
 }
 .combo{
     right: auto!important;

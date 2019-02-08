@@ -7,7 +7,6 @@ import { DeckNewPage } from '../deck-new/deck-new';
 import { DeckDetailPage } from '../deck-detail/deck-detail';
 import { Observable } from 'rxjs';
 
-@IonicPage()
 @Component({
   selector: 'page-deck-list',
   templateUrl: 'deck-list.html',
@@ -170,6 +169,15 @@ export class DeckListPage implements OnInit{
       let usrlStart = "https://keyforge-compendium.com/decks?utf8=%E2%9C%93&filterrific%5Bwith_deck_name%5D=";
       let urlEnd = '&commit=Search&filterrific%5Bwith_card_ids%5D%5B%5Dcard_id=&filterrific%5Bwith_card_ids%5D%5B%5Dcard_type=%3E%3D&filterrific%5Bwith_card_ids%5D%5B%5Dcard_count=1&filterrific%5Bwith_adhd%5Da_rating=&filterrific%5Bwith_adhd%5Da_type=%3E&filterrific%5Bwith_adhd%5Db_rating=&filterrific%5Bwith_adhd%5Db_type=%3E&filterrific%5Bwith_adhd%5Dc_rating=&filterrific%5Bwith_adhd%5Dc_type=%3E&filterrific%5Bwith_adhd%5De_rating=&filterrific%5Bwith_adhd%5De_type=%3E&filterrific%5Bwith_adhd%5Dconsistency_rating=&filterrific%5Bwith_adhd%5Dconsistency_type=%3E&filterrific%5Bwith_card_count%5Dcreature_count=&filterrific%5Bwith_card_count%5Dcreature_type=%3E&filterrific%5Bwith_card_count%5Daction_count=&filterrific%5Bwith_card_count%5Daction_type=%3E&filterrific%5Bwith_card_count%5Dartifact_count=&filterrific%5Bwith_card_count%5Dartifact_type=%3E&filterrific%5Bwith_card_count%5Dupgrade_count=&filterrific%5Bwith_card_count%5Dupgrade_type=%3E&filterrific%5Bwith_rare_count%5Dcount=&filterrific%5Bwith_rare_count%5Dtype=%3E%3D&filterrific%5Bwith_common_count%5Dcount=&filterrific%5Bwith_common_count%5Dtype=%3E%3D&filterrific%5Bwith_uncommon_count%5Dcount=&filterrific%5Bwith_uncommon_count%5Dtype=%3E%3D&filterrific%5Bwith_fixed_count%5Dcount=&filterrific%5Bwith_fixed_count%5Dtype=%3E%3D&filterrific%5Bwith_variant_count%5Dcount=&filterrific%5Bwith_variant_count%5Dtype=%3E%3D&filterrific%5Bby_house%5D%5Border_type%5D=Includes';
       let url = usrlStart + encodeURIComponent(deckName) + urlEnd;
+      window.open(url,'_system','location=yes');
+    }
+    event.stopPropagation();
+  }
+
+  onOpenDeckSAS(event, deckName){
+    if(deckName){
+      let usrlStart = "https://decksofkeyforge.com/decks?title=";
+      let url = usrlStart + encodeURIComponent(deckName);
       window.open(url,'_system','location=yes');
     }
     event.stopPropagation();

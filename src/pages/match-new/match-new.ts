@@ -3,10 +3,9 @@ import { ToolsProvider } from './../../providers/tools/tools';
 import { DataProvider } from '../../providers/data/data';
 import { Deck } from './../../models/deck';
 import { Component} from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 import { cst } from '../../models/constantes';
 
-@IonicPage()
 @Component({
   selector: 'page-match-new',
   templateUrl: 'match-new.html',

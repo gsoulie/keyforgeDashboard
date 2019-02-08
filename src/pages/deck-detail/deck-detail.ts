@@ -1,13 +1,11 @@
 import { DataProvider } from '../../providers/data/data';
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { Player } from '../../models/player';
 import { cst } from '../../models/constantes';
 import { ToolsProvider } from '../../providers/tools/tools';
 import { Deck } from '../../models/deck';
 
-
-@IonicPage()
 @Component({
   selector: 'page-deck-detail',
   templateUrl: 'deck-detail.html',

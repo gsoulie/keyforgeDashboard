@@ -5,23 +5,25 @@
 </ion-header>
 
 <ion-content padding class="window">
-    
-  <div class="divCard" [ngClass]="resWinDeck1 === 'Win' ? 'divCardWin' : 'divCard'">
-    <ion-item no-lines>
-      <button ion-button no-padding block clear item-left (click)="onChooseDeck(1)" item-left>Sélectionner un deck</button>
-      <button ion-button no-padding block clear item-left (click)="onChoosePlayer(1)" item-right>Sélectionner un joueur</button>
+
+  <div class="divCard" text-center [ngClass]="resWinDeck1 === 'Win' ? 'divCardWin' : 'divCard'">
+    <ion-item no-lines class="buttonItem" [style.width]="'90%'">
+      <button ion-button no-padding block item-left (click)="onChooseDeck(1)" item-left>
+          <ion-icon name="albums"></ion-icon>&nbsp;&nbsp;deck</button>
+      <button ion-button no-padding block item-left (click)="onChoosePlayer(1)" item-right>
+        <ion-icon name="person-add"></ion-icon>&nbsp;&nbsp;joueur</button>
     </ion-item>
-    <ion-item no-lines no-padding class="deckSelctionItem">
-      <font class="cardTitle" item-left><b>{{ deck1?.deckName }}</b></font>
-      <i>{{ player1?.nom }}</i>
-    </ion-item>   
+    <ion-item text-center no-lines no-padding class="deckSelctionItem">
+      <font class="cardTitle" text-center><b>{{ deck1?.deckName }}</b></font>
+    </ion-item>
+    <i>{{ player1?.nom }}</i>
     <ion-item class="cardHeader" text-center no-padding no-lines>
-      <img *ngIf="deck1" src="{{ deck1?.faction1.url }}" item-left/>
-      <img *ngIf="deck1" src="{{ deck1?.faction2.url }}" item-left/>
-      <img *ngIf="deck1" src="{{ deck1?.faction3.url }}" item-left/>
+      <img *ngIf="deck1" src="{{ deck1?.faction1.url }}"/>
+      <img *ngIf="deck1" src="{{ deck1?.faction2.url }}"/>
+      <img *ngIf="deck1" src="{{ deck1?.faction3.url }}"/>
     </ion-item>
-    <ion-item no-lines class="cardHeader" *ngIf="deck1">
-      <ion-select item-left interface="action-sheet" placeholder="Résultat" [(ngModel)]="resWinDeck1" name="resPlayer1">
+    <ion-item no-lines text-center class="cardHeader" *ngIf="deck1">
+      <ion-select interface="action-sheet" placeholder="Résultat" [(ngModel)]="resWinDeck1" name="resPlayer1">
         <ion-option *ngFor="let res of resStatus" [value]="res" (ionSelect)="onUpdateResDeck1()">{{ res }}</ion-option>
       </ion-select>
       <img *ngIf="resWinDeck1 === 'Win'" class="win_picto" src="../assets/imgs/key_win.png" item-right/>
@@ -30,19 +32,22 @@
   <ion-item class="versus" no-lines>
     <h1 text-center><b>VS</b></h1>
   </ion-item>
-  <div class="divCard" [ngClass]="resWinDeck2 === 'Win' ? 'divCardWin' : 'divCard'">
-    <ion-item no-lines>
-      <button ion-button no-padding block clear item-left (click)="onChooseDeck(2)" item-left>Sélectionner un deck</button>
-      <button ion-button no-padding block clear item-left (click)="onChoosePlayer(2)" item-right>Sélectionner un joueur</button>
+  <div class="divCard" text-center [ngClass]="resWinDeck2 === 'Win' ? 'divCardWin' : 'divCard'">
+    <ion-item no-lines class="buttonItem" [style.width]="'90%'">
+      <button ion-button no-padding block item-left (click)="onChooseDeck(2)" item-left><ion-icon name="albums">
+      </ion-icon>&nbsp;&nbsp;deck</button>
+      <button ion-button no-padding block item-left (click)="onChoosePlayer(2)" item-right>
+          <ion-icon name="person-add"></ion-icon>&nbsp;&nbsp;joueur
+      </button>
     </ion-item>
-    <ion-item no-lines no-padding class="deckSelctionItem">
-      <font class="cardTitle" item-left><b>{{ deck2?.deckName }}</b></font>
-      <i>{{ player2?.nom }}</i>
+    <ion-item no-lines text-center no-padding class="deckSelctionItem">
+      <font class="cardTitle" text-center><b>{{ deck2?.deckName }}</b></font>
     </ion-item>
-    <ion-item class="cardHeader" no-padding no-lines>
-      <img *ngIf="deck2" src="{{ deck2?.faction1.url }}" item-left/>
-      <img *ngIf="deck2" src="{{ deck2?.faction2.url }}" item-left/>
-      <img *ngIf="deck2" src="{{ deck2?.faction3.url }}" item-left/>
+    <i>{{ player2?.nom }}</i>
+    <ion-item class="cardHeader" text-center  no-padding no-lines>
+      <img *ngIf="deck2" src="{{ deck2?.faction1.url }}"/>
+      <img *ngIf="deck2" src="{{ deck2?.faction2.url }}"/>
+      <img *ngIf="deck2" src="{{ deck2?.faction3.url }}"/>
     </ion-item>
     <ion-item no-lines class="cardHeader" *ngIf="deck2">
       <ion-select item-left interface="action-sheet" placeholder="Résultat" [(ngModel)]="resWinDeck2" name="resPlayer2">

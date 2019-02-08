@@ -3,6 +3,10 @@ page-deck-list {
         height: 50px;
         width: 50px;
     }
+    .factionPicto{
+        height: 30px;
+        width: 30px;
+    }
     ion-toolbar{
         background-color: map-get($colors, primary);
     }

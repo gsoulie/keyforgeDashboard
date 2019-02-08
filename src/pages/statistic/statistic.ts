@@ -1,12 +1,11 @@
 import { ToolsProvider } from './../../providers/tools/tools';
 import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { IonicPage, LoadingController } from 'ionic-angular';
+import { LoadingController } from 'ionic-angular';
 import { Observable } from 'rxjs';
 import { cst } from '../../models/constantes';
 import { Chart } from 'chart.js';
 
-@IonicPage()
 @Component({
   selector: 'page-statistic',
   templateUrl: 'statistic.html',

@@ -3,11 +3,10 @@ import { DataProvider } from './../../providers/data/data';
 import { Player } from './../../models/player';
 import { ToolsProvider } from './../../providers/tools/tools';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { cst } from '../../models/constantes';
 import { Deck } from '../../models/deck';
 
-@IonicPage()
 @Component({
   selector: 'page-deck-new',
   templateUrl: 'deck-new.html',

@@ -5,10 +5,9 @@ import { ToolsProvider } from './../../providers/tools/tools';
 import { PlayerDetailPage } from './../player-detail/player-detail';
 import { DataProvider } from '../../providers/data/data';
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { Observable } from 'rxjs';
 
-@IonicPage()
 @Component({
   selector: 'page-players-list',
   templateUrl: 'players-list.html',
