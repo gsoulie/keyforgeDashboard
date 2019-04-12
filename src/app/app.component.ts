@@ -1,3 +1,4 @@
+import { CardListPage } from './../pages/card-list/card-list';
 import { AuthserviceProvider } from './../providers/authservice/authservice';
 import { LoginPage } from './../pages/login/login';
 import { StatisticPage } from './../pages/statistic/statistic';
@@ -20,7 +21,7 @@ export class MyApp {
   rootPage: any = HomePage;
   pages: Array<{title: string, component: any, icon: string}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, 
+  constructor(public platform: Platform, public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     public alertCtrl: AlertController,
     public afAuth: AngularFireAuth,
@@ -32,6 +33,7 @@ export class MyApp {
       { title: 'Games', component: HomePage, icon:"md-people" },
       { title: 'Players', component: PlayersListPage, icon:"md-person" },
       { title: 'Decks', component: DeckListPage, icon:"md-albums" },
+      { title: 'Cards', component: CardListPage, icon:"image" },
       { title: 'Stats', component: StatisticPage, icon:"md-medal" },
       { title: 'Suggestions', component: SuggestionPage, icon:"md-help"}
     ];
@@ -92,7 +94,7 @@ export class MyApp {
     confirm.present();
 
   }
-  
+
   onOpenRulebook(){
     let url = "https://kop-cdn.keyforgegame.com/filer_public/30/03/30032847-fa82-46a3-a28b-984efc5a91ca/keyforge_rulebook_v8-compressed.pdf?fbclid=IwAR07WNrKYQoGT0ARh3lZDmlgrl65UeB-JYKwfHAsMpHpd5YdrEAE77Gbrfs";
     window.open(url,'_system','location=yes');
