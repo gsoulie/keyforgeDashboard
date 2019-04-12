@@ -1,3 +1,4 @@
+import { CardListPage } from './../pages/card-list/card-list';
 import { SuggestionPage } from './../pages/suggestion/suggestion';
 import { MatchNewPage } from './../pages/match-new/match-new';
 import { LoginPage } from './../pages/login/login';
@@ -24,14 +25,6 @@ import { DeckDetailPage } from '../pages/deck-detail/deck-detail';
 import { DeckNewPage } from '../pages/deck-new/deck-new';
 import { AuthserviceProvider } from '../providers/authservice/authservice';
 
-export const firebaseConfig = {
-  apiKey: "<YOUR_FIREBASE_API_KEY>",
-  authDomain: "<YOUR_FIREBASE_AUTH_DOMAIN>",
-  databaseURL: "<YOUR_FIREBASE_DB_URL>",
-  projectId: "<YOUR_PROJECT_ID>",
-  storageBucket: "",
-  messagingSenderId: "1039882347370"
-}
 
 @NgModule({
   declarations: [
@@ -46,6 +39,7 @@ export const firebaseConfig = {
     MatchNewPage,
     DeckListPage,
     StatisticPage,
+    CardListPage,
     LoginPage,
     SuggestionPage
   ],
@@ -67,6 +61,7 @@ export const firebaseConfig = {
     MatchDetailPage,
     MatchNewPage,
     DeckListPage,
+    CardListPage,
     StatisticPage,
     LoginPage,
     SuggestionPage
