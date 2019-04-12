@@ -3,7 +3,7 @@ export const cst = {
     FACTION_LOGOS: {name:"Logos",url:"../assets/imgs/logo_logos.png"},
     FACTION_SANCTUM: {name:"Sanctum",url:"../assets/imgs/logo_sanctum.png"},
     FACTION_UNTAMED: {name:"Untamed",url:"../assets/imgs/logo_untamed.png"},
-    FACTION_SHADOW: {name:"Shadow",url:"../assets/imgs/logo_shadow.png"},
+    FACTION_SHADOW: {name:"Shadows",url:"../assets/imgs/logo_shadow.png"},
     FACTION_MARS: {name:"Mars",url:"../assets/imgs/logo_mars.png"},
     FACTION_DIS: {name:"Dis",url:"../assets/imgs/logo_dis.png"},
     WIN_PICTO: "../assets/imgs/key_win.png",

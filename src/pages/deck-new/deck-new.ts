@@ -27,8 +27,8 @@ export class DeckNewPage {
   deckCreatures: number = null;
   deckRares: number = null;
   deckChain: number = null;
-  
-  constructor(public navCtrl: NavController, 
+
+  constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public tools: ToolsProvider,
     public afDB: AngularFireDatabase,
@@ -68,7 +68,7 @@ export class DeckNewPage {
       this.tools.showAlert("Joueur manquant","Vous devez sélectionner un joueur");
       return;
     }
-    
+
     if(selectedFactions.length !== 3){
       this.tools.showAlert("Erreur de faction","Vous devez sélectionner 3 factions");
       return;
@@ -83,7 +83,7 @@ export class DeckNewPage {
         selectedFactions[2].faction,
         this.selectedPlayer,
         null),this.deckChain);
-      
+
       this.toastCtrl.create({
         message: "Le deck " + this.deckName + " a bien été ajouté",
         duration: 3000
@@ -124,5 +124,4 @@ export class DeckNewPage {
       this.navParams.get("callback")();
     }
   }
-
 }
