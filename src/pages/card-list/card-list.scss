@@ -1,0 +1,26 @@
+page-card-list {
+  .cardImage{
+    height: auto;
+    width: auto;
+    margin-right: 10px;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.5);
+    border-radius: 20px;
+  }
+  .factionFilter {
+    margin-bottom: 10px;
+  }
+  .factionImg {
+    height: 50px;
+    width: 50px;
+  }
+  .trashButton {
+    border-radius: 100px;
+    height: 45px;
+    width: 45px;
+    margin-top: -45px;
+  }
+  .conteneur {
+    margin: auto;
+    width: auto;
+  }
+}
