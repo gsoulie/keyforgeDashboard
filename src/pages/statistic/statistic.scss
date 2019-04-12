@@ -3,6 +3,13 @@ page-statistic {
         height: 50px;
         width: 50px;
     }
+    .logoImg{
+      height: auto;
+      width: auto;
+    }
+    .factionStatLabel {
+      font-size: 120%;
+    }
     ion-toolbar{
         background-color: map-get($colors, primary);
     }

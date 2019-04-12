@@ -12,11 +12,57 @@
       </ion-select>
     </ion-toolbar>
   </ion-header>
-  
+
   <ion-content padding class="window">
-    <div style="display: block">
+    <div style="display: block" *ngIf="!filteringInProcess">
       <canvas #lineCanvas></canvas>
     </div>
+
+    <ion-grid text-center [style.backgroundColor]="'transparent'">
+      <ion-row text-center>
+        <ion-col *ngFor="let d of factionWinRating">
+          <img class="logoImg" src="{{ d?.logo?.url }}"/><br>
+          <font class="factionStatLabel" text-center color="'#000000'"><b>{{ d?.res }}%</b></font>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <!-- <ion-grid text-center [style.backgroundColor]="'transparent'">
+        <ion-row text-center>
+          <ion-col text-center>
+            <img src="{{ logoDis?.faction?.url }}"/>
+            <font text-center color="'#000000'"><b>{{ cptDis }}%</b></font>
+          </ion-col>
+          <ion-col text-center>
+            <img src="{{ logoBrobnar.faction.url }}"/>
+            <font color="'#000000'"><b>{{ cptBrobnar }}%</b></font>
+          </ion-col>
+          <ion-col text-center>
+            <img src="{{ logoLogos.faction.url }}"/>
+            <font color="'#000000'"><b>{{ cptLogos }}%</b></font>
+          </ion-col>
+          <ion-col text-center>
+            <img src="{{ logoMars.faction.url }}"/>
+            <font color="'#000000'"><b>{{ cptMars }}%</b></font>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-center text-center>
+            <img src="{{ logoSanctum.faction.url }}"/>
+            <font color="'#000000'"><b>{{ cptSanctum }}%</b></font>
+          </ion-col>
+          <ion-col col-center text-center>
+            <img src="{{ logoShadow.faction.url }}"/>
+            <font color="'#000000'"><b>{{ cptShadow }}%</b></font>
+          </ion-col>
+          <ion-col col-center text-center>
+            <img src="{{ logoUntamed.faction.url }}"/>
+            <font color="'#000000'"><b>{{ cptUntamed }}%</b></font>
+          </ion-col>
+          <ion-col col-center text-center>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid> -->
 
     <div class="divCard" *ngFor="let item of decksTemp">
       <ion-item class="cardHeader" no-padding no-lines>
@@ -28,21 +74,20 @@
                 <font color="'#000000'">Win : <ion-badge>{{ item?.pourcentWin }}%</ion-badge> ({{ item?.win }})</font>
             </ion-col>
             <ion-col>
-                <font color="'#000000'">Loose : <ion-badge>{{ item?.pourcentLoose }}%</ion-badge> ({{ item?.loose }})</font>  
+                <font color="'#000000'">Loose : <ion-badge>{{ item?.pourcentLoose }}%</ion-badge> ({{ item?.loose }})</font>
             </ion-col>
             <ion-col>
-                <font color="'#000000'">Draw : <b>{{ item?.pourcentDraw }}%</b> ({{ item?.draw }})</font> 
+                <font color="'#000000'">Draw : <b>{{ item?.pourcentDraw }}%</b> ({{ item?.draw }})</font>
             </ion-col>
             <ion-col>
                 <font color="'#000000'">Parties : <b>{{ item?.nbGames }}</b></font>
             </ion-col>
           </ion-row>
         </ion-grid>
-          
+
         <img src="{{ item?.faction1?.url }}" item-right/>
         <img src="{{ item?.faction2?.url }}" item-right/>
         <img src="{{ item?.faction3?.url }}" item-right/>
       </ion-item>
     </div>
   </ion-content>
-  
