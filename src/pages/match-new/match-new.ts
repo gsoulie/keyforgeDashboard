@@ -23,15 +23,16 @@ export class MatchNewPage {
   selectedPlayer;
   player1: Player = null;
   player2: Player = null;
+  saveFields = true;
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private dataService: DataProvider,
     private tools: ToolsProvider,
     private toastCtrl: ToastController,
     private alertCtrl: AlertController) {
       this.decks = this.dataService.getDecks();
-      this.players = this.dataService.getPlayers();      
+      this.players = this.dataService.getPlayers();
       this.resStatus = [cst.GAME_WIN,cst.GAME_LOOSE,cst.GAME_DRAW];
   }
   onAddNewMatch(){
@@ -66,6 +67,12 @@ export class MatchNewPage {
       duration: 3000
     }).present();
 
+    if (!this.saveFields) {
+      this.onResetField();
+    }
+  }
+
+  onResetField() {
     this.deck1 = null;
     this.deck2 = null;
     this.resWinDeck1 = null;
@@ -74,8 +81,14 @@ export class MatchNewPage {
     this.player2 = null;
   }
 
+  onChangeToggle(ev) {
+    if(ev.value === false) {
+      this.onResetField();
+    }
+  }
+
   /**
-   * 
+   *
    * @param activeDeck : prend la valeur 1 ou 2
    */
   onChooseDeck(activeDeck){
@@ -89,9 +102,9 @@ export class MatchNewPage {
           value: deck.deckName,
           label: deck.deckName,
           checked: false
-        })      
+        })
       });
-  
+
       alertPopup.addButton('Annuler');
       alertPopup.addButton({
         text: 'Sélectionner',
@@ -106,7 +119,7 @@ export class MatchNewPage {
           }
         }
       });
-  
+
       alertPopup.present();
     }
   }
@@ -124,7 +137,7 @@ export class MatchNewPage {
         value: player.nom,
         label: player.nom,
         checked: false
-      })      
+      })
     });
 
     alertPopup.addButton('Annuler');

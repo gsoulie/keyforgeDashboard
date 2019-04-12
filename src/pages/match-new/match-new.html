@@ -5,6 +5,10 @@
 </ion-header>
 
 <ion-content padding class="window">
+  <ion-item no-lines [style.background]="'transparent'">
+    <ion-label>Conserver les champs</ion-label>
+    <ion-toggle color="primary" checked [(ngModel)]="saveFields" (ionChange)="onChangeToggle($event)"></ion-toggle>
+  </ion-item>
 
   <div class="divCard" text-center [ngClass]="resWinDeck1 === 'Win' ? 'divCardWin' : 'divCard'">
     <ion-item no-lines class="buttonItem" [style.width]="'90%'">
