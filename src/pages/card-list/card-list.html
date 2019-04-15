@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header no-border>
     <ion-navbar>
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
@@ -7,44 +7,46 @@
     </ion-navbar>
     <ion-toolbar>
       <ion-searchbar debounce="500" placeholder="Filtrage par numéro / nom" class="searchbar" [(ngModel)]="searchTerm"
-    (ionChange)="onFilteringCard($event)"></ion-searchbar>
+    (ionChange)="onFilteringCard($event, false)"></ion-searchbar>
     </ion-toolbar>
+
+      <div class="factionFilter">
+        <button clear icon-only
+          [ngClass]="logoDis.selected === true ? 'logoButtonSelected' : 'logoButton'" (click)="onSelect(logoDis)" type="button">
+          <img class="factionImg" [src]="logoDis.faction.url"/>
+        </button>
+        <button clear icon-only
+          [ngClass]="logoBrobnar.selected === true ? 'logoButtonSelected' : 'logoButton'" (click)="onSelect(logoBrobnar)" type="button">
+        <img class="factionImg" [src]="logoBrobnar.faction.url"/>
+        </button>
+        <button clear icon-only
+          [ngClass]="logoLogos.selected === true ? 'logoButtonSelected' : 'logoButton'" (click)="onSelect(logoLogos)" type="button">
+          <img class="factionImg" [src]="logoLogos.faction.url"/>
+        </button>
+        <button clear icon-only
+          [ngClass]="logoMars.selected === true ? 'logoButtonSelected' : 'logoButton'" (click)="onSelect(logoMars)" type="button">
+          <img class="factionImg" [src]="logoMars.faction.url"/>
+        </button>
+        <button clear icon-only
+          [ngClass]="logoSanctum.selected === true ? 'logoButtonSelected' : 'logoButton'" (click)="onSelect(logoSanctum)" type="button">
+          <img class="factionImg" [src]="logoSanctum.faction.url"/>
+        </button>
+        <button clear icon-only
+          [ngClass]="logoShadow.selected === true ? 'logoButtonSelected' : 'logoButton'" (click)="onSelect(logoShadow)" type="button">
+          <img class="factionImg" [src]="logoShadow.faction.url"/>
+        </button>
+        <button clear icon-only
+          [ngClass]="logoUntamed.selected === true ? 'logoButtonSelected' : 'logoButton'" (click)="onSelect(logoUntamed)" type="button">
+          <img class="factionImg" [src]="logoUntamed.faction.url"/>
+        </button>
+        <button icon-only (click)="onResetFilter()" class="trashButton" ion-button>
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </div>
+      <h2 *ngIf="!networkStatusOnLine">Aucune connexion internet</h2>
   </ion-header>
 
   <ion-content class="window" padding>
-    <div class="factionFilter">
-      <button clear icon-only
-        [ngClass]="logoDis.selected === true ? 'logoButtonSelected' : 'logoButton'" (click)="onSelect(logoDis)" type="button">
-        <img class="factionImg" [src]="logoDis.faction.url"/>
-      </button>
-      <button clear icon-only
-        [ngClass]="logoBrobnar.selected === true ? 'logoButtonSelected' : 'logoButton'" (click)="onSelect(logoBrobnar)" type="button">
-      <img class="factionImg" [src]="logoBrobnar.faction.url"/>
-      </button>
-      <button clear icon-only
-        [ngClass]="logoLogos.selected === true ? 'logoButtonSelected' : 'logoButton'" (click)="onSelect(logoLogos)" type="button">
-        <img class="factionImg" [src]="logoLogos.faction.url"/>
-      </button>
-      <button clear icon-only
-        [ngClass]="logoMars.selected === true ? 'logoButtonSelected' : 'logoButton'" (click)="onSelect(logoMars)" type="button">
-        <img class="factionImg" [src]="logoMars.faction.url"/>
-      </button>
-      <button clear icon-only
-        [ngClass]="logoSanctum.selected === true ? 'logoButtonSelected' : 'logoButton'" (click)="onSelect(logoSanctum)" type="button">
-        <img class="factionImg" [src]="logoSanctum.faction.url"/>
-      </button>
-      <button clear icon-only
-        [ngClass]="logoShadow.selected === true ? 'logoButtonSelected' : 'logoButton'" (click)="onSelect(logoShadow)" type="button">
-        <img class="factionImg" [src]="logoShadow.faction.url"/>
-      </button>
-      <button clear icon-only
-        [ngClass]="logoUntamed.selected === true ? 'logoButtonSelected' : 'logoButton'" (click)="onSelect(logoUntamed)" type="button">
-        <img class="factionImg" [src]="logoUntamed.faction.url"/>
-      </button>
-      <button icon-only (click)="onResetFilter()" class="trashButton" ion-button>
-        <ion-icon name="trash"></ion-icon>
-      </button>
-    </div>
 
     <div class="conteneur">
       <img class="cardImage" *ngFor="let card of cardList" src="{{card.front_image}}"/>

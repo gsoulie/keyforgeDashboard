@@ -6,8 +6,11 @@ page-card-list {
     box-shadow: 0 2px 8px 0 rgba(0,0,0,0.5);
     border-radius: 20px;
   }
+  .factionToolbar {
+    background-color: #f4f4f4;
+  }
   .factionFilter {
-    margin-bottom: 10px;
+    padding-top: 10px;
   }
   .factionImg {
     height: 50px;
