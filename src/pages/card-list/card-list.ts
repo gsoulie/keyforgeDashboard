@@ -32,10 +32,21 @@ export class CardListPage implements OnInit {
     private network: Network) {
       this.cardsTemp = cards.sort(this.tools.predicateBy("card_number"));
       //this.cardList = this.cardsTemp;
+      if (this.network.type === 'none') {
+        this.networkStatusOnLine = false;
+      }
+
+      this.network.onDisconnect().subscribe(() => {
+        this.networkStatusOnLine = false;
+      });
+
+      this.network.onConnect().subscribe(() => {
+        this.networkStatusOnLine = true;
+      });
   }
 
   ngOnInit() {
-    // watch network for a disconnection
+    /*// watch network for a disconnection
     this.network.onDisconnect().subscribe(() => {
       console.log('network was disconnected :-(');
       this.networkStatusOnLine = false;
@@ -49,8 +60,13 @@ export class CardListPage implements OnInit {
       setTimeout(() => {
         this.networkStatusOnLine = true;
       }, 3000);
-    });
+    });*/
+    console.log('network ' + this.isOnline());
   }
+
+  isOnline(): boolean {
+		return this.networkStatusOnLine;
+	}
 
   onFilteringCard(ev: any, houseFilteringMode = false) {
 

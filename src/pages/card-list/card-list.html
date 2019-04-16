@@ -48,7 +48,17 @@
 
   <ion-content class="window" padding>
 
-    <div class="conteneur">
-      <img class="cardImage" *ngFor="let card of cardList" src="{{card.front_image}}"/>
+    <div class="conteneur" *ngIf="networkStatusOnLine">
+      <img class="cardImage" *ngFor="let card of cardList" src="{{card.front_image}}">
+    </div>
+    <div *ngIf="!networkStatusOnLine">
+      <ion-card *ngFor="let card of cardList">
+        <ion-card-header>
+          <ion-label>{{ card.card_number }} - <b>{{ card.card_title }}</b></ion-label>
+        </ion-card-header>
+        <ion-card-content>
+          <p class="cardText">{{ card.card_text }}</p>
+        </ion-card-content>
+      </ion-card>
     </div>
   </ion-content>
